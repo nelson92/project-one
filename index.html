@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content=" IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basic</title>
+
+    <!--jquery CDN-->
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+
+    <!--jquery code-->
+    <script>
+      $(document).ready(function () {});
+    </script>
+
+    <!--stylesheet link-->
+
+    <link
+      href="./public/resetstylesheet.css"
+      type="text/css"
+      rel="stylesheet"
+    />
+    <link href="./public/webNav.css" type="text/css" rel="stylesheet" />
+    <link href="./public/style.css" type="text/css" rel="stylesheet" />
+
+    <!--bootstrap CDN-->
+
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header>
+      <h2>Newsletter</h2>
+    </header>
+    <nav class="M">
+      <div class="M-BTN-TOG" onclick="toggleNav()"></div>
+      <!--<ul class = "M-L">
+                <li class = "M-L-I"><a class = "M-L-I-A" href = "#">Home</a></li>
+                <li class = "M-L-I"><a class = "M-L-I-A" href = "#">Portfolio</a></li>
+                <li class = "M-L-I"><a class = "M-L-I-A" href = "#">About Us</a></li>
+                <li class = "M-L-I"><a class = "M-L-I-A" href = "#">Gallery</a></li>
+                <li class = "M-L-I"><a class = "M-L-I-A" href = "#">Contact</a></li>
+            </ul>-->
+    </nav>
+    <aside class="S">
+      <ul class="S-L">
+        <li class="S-L-I"><span class="S-L-I-S">Categories</span></li>
+        <li class="S-L-I"><a class="S-L-I-A" href="#">Placeholder</a></li>
+        <li class="S-L-I"><a class="S-L-I-A" href="#">Placeholder</a></li>
+        <li class="S-L-I"><a class="S-L-I-A" href="#">Placeholder</a></li>
+        <li class="S-L-I"><a class="S-L-I-A" href="#">Placeholder</a></li>
+        <li class="S-L-I"><a class="S-L-I-A" href="#">Placeholder</a></li>
+      </ul>
+    </aside>
+
+    <div class="content">
+      <div id="W">
+        <div id="W-C">
+          <div id="W-C-T">Word of the Day</div>
+          <div id="W-C-W">Word: Word</div>
+          <div id="W-C-D">Definiton: Word</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content">
+      <div id="N" class="content">
+        <div id="N-C">
+          <div id="N-C-S">
+            <input id="N-C-S-I" type="text" placeholder="Input" />
+            <br />
+            <button id="N-C-S-B">Search</button>
+          </div>
+          <div id="B1" class="N-C-N"></div>
+          <div id="B2" class="N-C-N"></div>
+          <div id="B3" class="N-C-N"></div>
+          <div id="B4" class="N-C-N"></div>
+          <div id="B5" class="N-C-N"></div>
+          <div id="B6" class="N-C-N"></div>
+          <div id="B7" class="N-C-N"></div>
+          <div id="B8" class="N-C-N"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <!--JavaScript link-->
+
+  <script src="./public/webNav.js"></script>
+  <script src="./public/script.js"></script>
+</html>
