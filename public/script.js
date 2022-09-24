@@ -12,6 +12,13 @@ const T5 = document.querySelector('#B5T');
 const T6 = document.querySelector('#B6T');
 
 
+const btnBox = document.querySelector('#P');
+const preBtn =  document.querySelector('#P-P');
+const nextBtn =  document.querySelector('#P-N');
+
+
+
+let passed =  false;
 
 
 
@@ -21,6 +28,7 @@ async function getCurr() {
         const apiUrl = `https://api.currentsapi.services/v1/latest-news?&apiKey=${currAPI}`;
         const response = await fetch(apiUrl);
         const data = await response.json();
+        passed = true;
         return data;
     } catch {
         console.log("error");
@@ -82,22 +90,64 @@ function setPage() {
 
 async function loadPage() {
     let val = await getCurr();
-    console.log(val.news[0].image);
-    for(let i = 0; i < val.news.length; i++) {
-        if(val.news[i].image != "None"){
-            currStore[currStore.length] = val.news[i];
-            //console.log(i)
+    if (passed == true) {
+        if(currPage == 1) {
+            preBtn.style.display = 'none';
+            btnBox.style.justifyContent = 'flex-end'
         }
+        console.log(val.news[0].image);
+        for(let i = 0; i < val.news.length; i++) {
+            if(val.news[i].image != "None"){
+                currStore[currStore.length] = val.news[i];
+                //console.log(i)
+            }
+        }
+        console.log(currStore);
+        extra = currStore.length % boxes;
+        totalPages = (currStore.length - extra) / 6;
+        console.log(totalPages);
+        setPage();
     }
-    console.log(currStore);
-    extra = currStore.length % boxes;
-    totalPages = currStore.length - extra;
-    console.log(totalPages);
-    setPage();
-    
 }
 
 loadPage();
+
+
+
+nextBtn.addEventListener('click', function() {
+    if(currPage < totalPages) {
+        currPage += 1;
+        pageIndex += 6;
+        if(currPage > 1) {
+            preBtn.style.display = 'block';
+            btnBox.style.justifyContent = 'space-between'
+        }
+        if(currPage == totalPages) {
+            nextBtn.style.display = 'none';
+        }
+        setPage();
+
+    }
+})
+
+preBtn.addEventListener('click', function() {
+    if(currPage != 1) {
+        currPage -= 1;
+        pageIndex -= 6;
+        if(currPage < totalPages) {
+            nextBtn.style.display = 'block';
+        }
+        if(currPage == 1) {
+            preBtn.style.display = 'none';
+            btnBox.style.justifyContent = 'flex-end'
+        }
+        setPage();
+
+    }
+})
+
+
+
 
 
 
