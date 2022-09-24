@@ -71,11 +71,12 @@ header {
 
 #W {
     display: flex; 
-    justify-content: center;
+    /*justify-content: center;*/
     border: solid 2px green;
     height: 100px;
     width: 100%;
     margin-top: 90px;
+    margin-left: 60px;
 }
 
 #W-C {
@@ -111,7 +112,7 @@ header {
 #N-C {
     border: solid 2px red;
     width: 100%;
-    margin-left: 50px;
+    margin-left: 57.5px;
     display: inline-flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -132,7 +133,8 @@ header {
 }
 
 #B1, #B2, #B3, #B4, #B5, #B6 {
-    background-size:cover;
+    background-size:contain, cover;
+    background-position: center;
     background-repeat: no-repeat;
 }
 /*
@@ -157,6 +159,8 @@ header {
 }*/
 
 @media screen and (max-width: 1500px) {
+
+
     .N-C-N {
         height: 400px;
         width: 50%;
@@ -164,7 +168,11 @@ header {
 
     #N-C {
         width: 100%;
-        margin-left: 50px;
+        margin-left: 57.5px;
+    }
+
+    #N {
+        height: 1300px;
     }
     
 }
@@ -179,7 +187,7 @@ header {
 
     #N-C {
         width: 100%;
-        margin-left: 50px;
+        margin-left: 57.5px;
     }
     #N {
         height: 3100px;
@@ -192,13 +200,12 @@ header {
 
 @media screen and (max-width: 825px) {
     .N-C-N {
-        height: 400px;
+        height: 300px;
         width: 100%;
     }
 
     #N-C {
         width: 100%;
-        margin-left: 40px;
     }
     
     #N {
@@ -215,7 +222,6 @@ header {
 
     #N-C {
         width: 100%;
-        margin-left: 50px;
     }
     #N {
         height: 1900px;
@@ -230,7 +236,6 @@ header {
 
     #N-C {
         width: 100%;
-        margin-left: 30px;
     }
 
     #N {
