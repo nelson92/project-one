@@ -4,6 +4,13 @@ const box3 = document.querySelector('#B3');
 const box4 = document.querySelector('#B4');
 const box5 = document.querySelector('#B5');
 const box6 = document.querySelector('#B6');
+const T1 = document.querySelector('#B1T');
+const T2 = document.querySelector('#B2T');
+const T3 = document.querySelector('#B3T');
+const T4 = document.querySelector('#B4T');
+const T5 = document.querySelector('#B5T');
+const T6 = document.querySelector('#B6T');
+
 
 
 
@@ -47,21 +54,27 @@ function setPage() {
     for(let i = 0; i < 6; i++) {
         if(i == 0) {
             box1.style.backgroundImage = `url(${currStore[0 + pageIndex].image})`
+            T1.innerText = `${currStore[0 + pageIndex].title}`
         }
         if(i == 1) {
             box2.style.backgroundImage = `url(${currStore[1 + pageIndex].image})`
+            T2.innerText = `${currStore[1 + pageIndex].title}`
         }
         if(i == 2) {
             box3.style.backgroundImage = `url(${currStore[2 + pageIndex].image})`
+            T3.innerText = `${currStore[2 + pageIndex].title}`
         }
         if(i == 3) {
             box4.style.backgroundImage = `url(${currStore[3 + pageIndex].image})`
+            T4.innerText = `${currStore[3 + pageIndex].title}`
         }
         if(i == 4) {
             box5.style.backgroundImage = `url(${currStore[4 + pageIndex].image})`
+            T5.innerText = `${currStore[4 + pageIndex].title}`
         }
         if(i == 5) {
             box6.style.backgroundImage = `url(${currStore[5 + pageIndex].image})`
+            T6.innerText = `${currStore[5 + pageIndex].title}`
         }
     }
 }

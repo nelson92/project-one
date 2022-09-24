@@ -1,7 +1,7 @@
-/*
+
 * {
     color: white
-}*/
+}
 
 body {
     display: grid;
@@ -28,6 +28,7 @@ header {
 
 #T h2 {
     margin-left: 60px;
+    color: black
 }
 
 
@@ -124,12 +125,24 @@ header {
 }
 
 .N-C-N {
-    display: block;
+    display: flex;
     height: 500px;
     border: solid 2px green;
     width: 50%;
     margin-left: 0%;
     margin-right: 0%;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.N-C-N:hover{ 
+    cursor: pointer;
+
+}
+
+.title{ 
+    background-color: black;
+
 }
 
 #B1, #B2, #B3, #B4, #B5, #B6 {
