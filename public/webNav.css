@@ -67,7 +67,7 @@ body {
     left: 0;
     bottom: 0;
     width: 60px;
-    height: calc(100vh - 60px);
+    height: calc(100vh - 70px);
     padding: 0 5px;
     background-color: #1b1b1b;
     z-index: 1000;
