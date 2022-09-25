@@ -51,7 +51,6 @@ searchBtn.addEventListener("click", async function() {
     passed4 = false;
     let input = inputVal.value;
     let data = await getSearch(input);
-    console.log(data)
     if (passed4 == true && data.news.length >= 6) {
         pageIndex = 0;
         currStore = []
@@ -81,6 +80,9 @@ searchBtn.addEventListener("click", async function() {
 
 
 const currAPI = "zaSmIPDUx3iAmelqolvF17hSHrG1zCsLzuTjxKenPwJmUnBC"
+
+
+
 async function getCurr() {
     try {
         const apiUrl = `https://api.currentsapi.services/v1/latest-news?language=en&apiKey=${currAPI}`;
@@ -145,8 +147,7 @@ async function getWord() {
 
 
 
-//let currStore = new Array();
-
+let currStore = new Array();
 let boxes = 6;
 let currPage = 1;
 //if next page is clicked add 6 to the pageIndex
@@ -209,27 +210,19 @@ function setPage(currStore) {
         }
     }
 }
-let currStore = new Array();
 
-async function loadPage() {
-    //let currStore = [];
-    let val = await getCurr();
-    let cat = await getAllCat();
-    cat = cat.categories;
+
+async function loadWord() {
     let word = await getWord();
-    console.log(word);
     if(localStorage.length < 1) {
         localStorage.setItem(`word`, JSON.stringify(word));
         localStorage.setItem('date', JSON.stringify(today.format("MMM Do, YYYY")))
         wordBox.innerText = `Word: ${word.word}`;
         defBox.innerText = `Definition: ${word.definition}`;
     }
-    //localStorage.clear();
     if(localStorage.length >= 1) {
-        console.log(localStorage)
         let check = JSON.parse(localStorage.getItem('word'));
         let date = JSON.parse(localStorage.getItem('date'));
-        console.log(check);
         if (date == today.format("MMM Do, YYYY")) {
             wordBox.innerText = `Word: ${check[0].word}`;
             defBox.innerText = `Definition: ${check[0].definition}`;
@@ -243,8 +236,19 @@ async function loadPage() {
         }
 
     }
+}
+
+//Allows new word to be loaded at midnight
+setInterval(async function() {
+    loadWord();
+}, 100);
 
 
+
+async function loadPage() {
+    let val = await getCurr();
+    let cat = await getAllCat();
+    cat = cat.categories;
     if (passed == true && passed2 == true) {
         currStore = new Array();
         setCat(cat);
@@ -255,13 +259,11 @@ async function loadPage() {
         for(let i = 0; i < val.news.length; i++) {
             if(val.news[i].image != "None"){
                 currStore[currStore.length] = val.news[i];
-                //console.log(i)
             }
         }
         console.log(currStore);
         extra = currStore.length % boxes;
         totalPages = (currStore.length - extra) / 6;
-        console.log(totalPages);
         resetBack();
         setPage(currStore);
     }
@@ -335,9 +337,6 @@ function resetBack() {
 }
 
 
-
-
-
 box1.addEventListener("click", function() {
     if(currStore.length > 0) {
         window.open(`${currStore[0 + pageIndex].url}`)
@@ -376,7 +375,6 @@ H1.addEventListener("click", async function() {
     let val = await getCurr();
     let cat = await getAllCat();
     cat = cat.categories;
-    //console.log(cat)
     if (passed == true && passed2 == true) {
         let currStore = [];
         currPage = 1;
@@ -390,7 +388,6 @@ H1.addEventListener("click", async function() {
         for(let i = 0; i < val.news.length; i++) {
             if(val.news[i].image != "None"){
                 currStore[currStore.length] = val.news[i];
-                //console.log(i)
             }
         }
         console.log(currStore);
@@ -399,7 +396,6 @@ H1.addEventListener("click", async function() {
         if(currPage == totalPages) {
             nextBtn.style.display = 'none';
         }
-        //console.log(totalPages);
         resetBack();
         setPage(currStore);
     }
@@ -409,7 +405,6 @@ H1.addEventListener("click", async function() {
 C1.addEventListener("click", async function() {
     passed3 = false;
     let cat = await getCat(C1.value);
-    console.log(cat)
     if (passed3 == true) {
         pageIndex = 0;
         currStore = []
@@ -439,7 +434,6 @@ C1.addEventListener("click", async function() {
 C2.addEventListener("click", async function() {
     passed3 = false;
     let cat = await getCat(C2.value);
-    console.log(cat)
     if (passed3 == true) {
         pageIndex = 0;
         currStore = []
@@ -468,7 +462,6 @@ C2.addEventListener("click", async function() {
 C3.addEventListener("click", async function() {
     passed3 = false;
     let cat = await getCat(C3.value);
-    console.log(cat)
     if (passed3 == true) {
         pageIndex = 0;
         currStore = []
@@ -498,7 +491,6 @@ C3.addEventListener("click", async function() {
 C4.addEventListener("click", async function() {
     passed3 = false;
     let cat = await getCat(C4.value);
-    console.log(cat)
     if (passed3 == true) {
         pageIndex = 0;
         currStore = []
@@ -528,7 +520,6 @@ C4.addEventListener("click", async function() {
 C5.addEventListener("click", async function() {
     passed3 = false;
     let cat = await getCat(C5.value);
-    console.log(cat)
     if (passed3 == true) {
         pageIndex = 0;
         currStore = []
@@ -558,7 +549,6 @@ C5.addEventListener("click", async function() {
 C6.addEventListener("click", async function() {
     passed3 = false;
     let cat = await getCat(C6.value);
-    console.log(cat)
     if (passed3 == true) {
         pageIndex = 0;
         currStore = []
@@ -588,7 +578,6 @@ C6.addEventListener("click", async function() {
 C7.addEventListener("click", async function() {
     passed3 = false;
     let cat = await getCat(C7.value);
-    console.log(cat)
     if (passed3 == true) {
         pageIndex = 0;
         currStore = []
@@ -618,7 +607,6 @@ C7.addEventListener("click", async function() {
 C8.addEventListener("click", async function() {
     passed3 = false;
     let cat = await getCat(C8.value);
-    console.log(cat)
     if (passed3 == true) {
         pageIndex = 0;
         currStore = []
@@ -648,7 +636,6 @@ C8.addEventListener("click", async function() {
 C9.addEventListener("click", async function() {
     passed3 = false;
     let cat = await getCat(C9.value);
-    console.log(cat)
     if (passed3 == true) {
         pageIndex = 0;
         currStore = []
@@ -678,7 +665,6 @@ C9.addEventListener("click", async function() {
 C10.addEventListener("click", async function() {
     passed3 = false;
     let cat = await getCat(C10.value);
-    console.log(cat)
     if (passed3 == true) {
         pageIndex = 0;
         currStore = []
@@ -709,7 +695,6 @@ C10.addEventListener("click", async function() {
 C11.addEventListener("click", async function() {
     passed3 = false;
     let cat = await getCat(C11.value);
-    console.log(cat)
     if (passed3 == true) {
         pageIndex = 0;
         currStore = []
