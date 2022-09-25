@@ -81,15 +81,6 @@ async function getCat(value) {
 
 //let currStore = new Array();
 
-function sortImage(val) {
-    for(let i = 0; i < val.length; i++) {
-        if(val.news[i].image != "None"){
-            currStore[currStore.length] = val.news[i];
-            //console.log(i)
-        }
-    }
-}
-
 let boxes = 6;
 let currPage = 1;
 //if next page is clicked add 6 to the pageIndex
