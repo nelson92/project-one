@@ -83,7 +83,7 @@ searchBtn.addEventListener("click", async function() {
 const currAPI = "zaSmIPDUx3iAmelqolvF17hSHrG1zCsLzuTjxKenPwJmUnBC"
 async function getCurr() {
     try {
-        const apiUrl = `https://api.currentsapi.services/v1/latest-news?&apiKey=${currAPI}`;
+        const apiUrl = `https://api.currentsapi.services/v1/latest-news?language=en&apiKey=${currAPI}`;
         const response = await fetch(apiUrl);
         const data = await response.json();
         passed = true;
@@ -298,6 +298,7 @@ preBtn.addEventListener('click', function() {
             preBtn.style.display = 'none';
             btnBox.style.justifyContent = 'flex-end'
         }
+        resetBack();
         setPage(currStore);
 
     }
