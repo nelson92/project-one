@@ -31,6 +31,10 @@ const C11 = document.querySelector('#C11');
 const H1 = document.querySelector('#H1');
 
 
+const wordBox = document.querySelector('#W-C-W');
+const defBox = document.querySelector('#W-C-D');
+
+let today = moment();
 
 
 let passed =  false;
@@ -68,6 +72,19 @@ async function getAllCat() {
 async function getCat(value) {
     try {
         const apiUrl = `https://api.currentsapi.services/v1/search?category=${value}&apiKey=${currAPI}`;
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+        passed3 = true;
+        return data;
+    } catch {
+        console.log("error");
+    }
+}
+
+
+async function getWord() {
+    try {
+        const apiUrl = `https://random-words-api.vercel.app/word?ref=publicapis.dev`;
         const response = await fetch(apiUrl);
         const data = await response.json();
         passed3 = true;
@@ -119,7 +136,6 @@ function setPage(currStore) {
     for(let i = 0; i < 6; i++) {
         if(i == 0) {
             box1.style.backgroundImage = `url(${currStore[0 + pageIndex].image})`
-            console.log(`url(${currStore[0 + pageIndex].image})`);
             T1.innerText = `${currStore[0 + pageIndex].title}`
         }
         if(i == 1) {
@@ -151,7 +167,35 @@ async function loadPage() {
     let val = await getCurr();
     let cat = await getAllCat();
     cat = cat.categories;
-    //console.log(cat)
+    let word = await getWord();
+    console.log(word);
+    if(localStorage.length < 1) {
+        localStorage.setItem(`word`, JSON.stringify(word));
+        localStorage.setItem('date', JSON.stringify(today.format("MMM Do, YYYY")))
+        wordBox.innerText = `Word: ${word.word}`;
+        defBox.innerText = `Definition: ${word.definition}`;
+    }
+    //localStorage.clear();
+    if(localStorage.length >= 1) {
+        console.log(localStorage)
+        let check = JSON.parse(localStorage.getItem('word'));
+        let date = JSON.parse(localStorage.getItem('date'));
+        console.log(check);
+        if (date == today.format("MMM Do, YYYY")) {
+            wordBox.innerText = `Word: ${check[0].word}`;
+            defBox.innerText = `Definition: ${check[0].definition}`;
+        }
+        if (date != today.format("MMM Do, YYYY")) {
+            localStorage.clear();
+            localStorage.setItem(`word`, JSON.stringify(word));
+            localStorage.setItem('date', JSON.stringify(today.format("MMM Do, YYYY")))
+            wordBox.innerText = `Word: ${word.word}`;
+            defBox.innerText = `Definition: ${word.definition}`;
+        }
+
+    }
+
+
     if (passed == true && passed2 == true) {
         currStore = new Array();
         setCat(cat);
