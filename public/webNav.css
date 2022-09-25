@@ -101,4 +101,8 @@ body {
     transition: all 0.3s ease-in-out;
 
 }
+
+.S-L-I-A:hover {
+    cursor: pointer;
+}
 /*Menu Navigation End*/
