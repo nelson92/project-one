@@ -72,16 +72,21 @@ body {
     background-color: #1b1b1b;
     z-index: 1000;
     transition: all 0.3s ease-in-out;
+    overflow:hidden;
 }
 
+
 .S:hover {
+    overflow:hidden;
     overflow-y: scroll;
+    scroll-snap-type: y mandatory;
 }
 
 .S-L {
     padding-top: 16px;
-    overflow: hidden;
-    visibility: hidden;
+    /*
+    overflow:hidden;
+    visibility: hidden;*/
 
 }
 
