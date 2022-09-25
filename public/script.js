@@ -185,11 +185,6 @@ async function loadPage() {
 
 loadPage();
 
-function load(currStore) {
-    setPage(currStore);
-}
-
-
 
 nextBtn.addEventListener('click', function() {
     if(currPage < totalPages) {
