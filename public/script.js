@@ -34,12 +34,49 @@ const H1 = document.querySelector('#H1');
 const wordBox = document.querySelector('#W-C-W');
 const defBox = document.querySelector('#W-C-D');
 
+const searchBtn = document.querySelector('#S-S-B');
+const inputVal = document.querySelector('#S-S-I');
+
 let today = moment();
 
 
 let passed =  false;
 let passed2 =  false;
 let passed3 = false;
+let passed4 = false;
+
+
+
+searchBtn.addEventListener("click", async function() {
+    passed4 = false;
+    let input = inputVal.value;
+    let data = await getSearch(input);
+    console.log(data)
+    if (passed4 == true && data.news.length >= 6) {
+        pageIndex = 0;
+        currStore = []
+        currPage = 1;
+        if(currPage == 1) {
+            preBtn.style.display = 'none';
+            btnBox.style.justifyContent = 'flex-end'
+            nextBtn.style.display = 'block';
+        }
+        for(let i = 0; i < data.news.length; i++) {
+            if(data.news[i].image != "None"){
+                currStore[currStore.length] = data.news[i];
+            }
+        }
+        console.log(currStore);
+        extra = currStore.length % boxes;
+        totalPages = (currStore.length - extra) / 6;
+        if(currPage == totalPages) {
+            nextBtn.style.display = 'none';
+        }
+        resetBack();
+        setPage(currStore);
+
+    }
+})
 
 
 
@@ -75,6 +112,18 @@ async function getCat(value) {
         const response = await fetch(apiUrl);
         const data = await response.json();
         passed3 = true;
+        return data;
+    } catch {
+        console.log("error");
+    }
+}
+
+async function getSearch(value) {
+    try {
+        const apiUrl = `https://api.currentsapi.services/v1/search?keywords=${value}&apiKey=${currAPI}`;
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+        passed4 = true;
         return data;
     } catch {
         console.log("error");
@@ -346,7 +395,10 @@ H1.addEventListener("click", async function() {
         console.log(currStore);
         extra = currStore.length % boxes;
         totalPages = (currStore.length - extra) / 6;
-        console.log(totalPages);
+        if(currPage == totalPages) {
+            nextBtn.style.display = 'none';
+        }
+        //console.log(totalPages);
         resetBack();
         setPage(currStore);
     }
@@ -374,6 +426,9 @@ C1.addEventListener("click", async function() {
         console.log(currStore);
         extra = currStore.length % boxes;
         totalPages = (currStore.length - extra) / 6;
+        if(currPage == totalPages) {
+            nextBtn.style.display = 'none';
+        }
         resetBack();
         setPage(currStore);
 
@@ -391,7 +446,6 @@ C2.addEventListener("click", async function() {
         if(currPage == 1) {
             preBtn.style.display = 'none';
             btnBox.style.justifyContent = 'flex-end'
-            nextBtn.style.display = 'block';
         }
         for(let i = 0; i < cat.news.length; i++) {
             if(cat.news[i].image != "None"){
@@ -401,6 +455,9 @@ C2.addEventListener("click", async function() {
         console.log(currStore);
         extra = currStore.length % boxes;
         totalPages = (currStore.length - extra) / 6;
+        if(currPage == totalPages) {
+            nextBtn.style.display = 'none';
+        }
         resetBack();
         setPage(currStore);
 
@@ -428,6 +485,9 @@ C3.addEventListener("click", async function() {
         console.log(currStore);
         extra = currStore.length % boxes;
         totalPages = (currStore.length - extra) / 6;
+        if(currPage == totalPages) {
+            nextBtn.style.display = 'none';
+        }
         resetBack();
         setPage(currStore);
 
@@ -455,6 +515,9 @@ C4.addEventListener("click", async function() {
         console.log(currStore);
         extra = currStore.length % boxes;
         totalPages = (currStore.length - extra) / 6;
+        if(currPage == totalPages) {
+            nextBtn.style.display = 'none';
+        }
         resetBack();
         setPage(currStore);
 
@@ -482,6 +545,9 @@ C5.addEventListener("click", async function() {
         console.log(currStore);
         extra = currStore.length % boxes;
         totalPages = (currStore.length - extra) / 6;
+        if(currPage == totalPages) {
+            nextBtn.style.display = 'none';
+        }
         resetBack();
         setPage(currStore);
 
@@ -509,6 +575,9 @@ C6.addEventListener("click", async function() {
         console.log(currStore);
         extra = currStore.length % boxes;
         totalPages = (currStore.length - extra) / 6;
+        if(currPage == totalPages) {
+            nextBtn.style.display = 'none';
+        }
         resetBack();
         setPage(currStore);
 
@@ -536,6 +605,9 @@ C7.addEventListener("click", async function() {
         console.log(currStore);
         extra = currStore.length % boxes;
         totalPages = (currStore.length - extra) / 6;
+        if(currPage == totalPages) {
+            nextBtn.style.display = 'none';
+        }
         resetBack();
         setPage(currStore);
 
@@ -563,6 +635,9 @@ C8.addEventListener("click", async function() {
         console.log(currStore);
         extra = currStore.length % boxes;
         totalPages = (currStore.length - extra) / 6;
+        if(currPage == totalPages) {
+            nextBtn.style.display = 'none';
+        }
         resetBack();
         setPage(currStore);
 
@@ -590,6 +665,9 @@ C9.addEventListener("click", async function() {
         console.log(currStore);
         extra = currStore.length % boxes;
         totalPages = (currStore.length - extra) / 6;
+        if(currPage == totalPages) {
+            nextBtn.style.display = 'none';
+        }
         resetBack();
         setPage(currStore);
 
@@ -617,6 +695,9 @@ C10.addEventListener("click", async function() {
         console.log(currStore);
         extra = currStore.length % boxes;
         totalPages = (currStore.length - extra) / 6;
+        if(currPage == totalPages) {
+            nextBtn.style.display = 'none';
+        }
         resetBack();
         setPage(currStore);
 
@@ -645,10 +726,15 @@ C11.addEventListener("click", async function() {
         console.log(currStore);
         extra = currStore.length % boxes;
         totalPages = (currStore.length - extra) / 6;
+        if(currPage == totalPages) {
+            nextBtn.style.display = 'none';
+        }
         resetBack();
         setPage(currStore);
 
     }
 })
+
+
 
 
