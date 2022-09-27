@@ -34,8 +34,8 @@ const H1 = document.querySelector('#H1');
 const wordBox = document.querySelector('#W-C-W');
 const defBox = document.querySelector('#W-C-D');
 
-const searchBtn = document.querySelector('#S-S-B');
-const inputVal = document.querySelector('#S-S-I');
+const searchBtn = document.querySelector('#SB-S-B');
+const inputVal = document.querySelector('#SB-S-I');
 
 let today = moment();
 
@@ -213,6 +213,7 @@ function setPage(currStore) {
 
 
 async function loadWord() {
+    //Persistence is "the continuance of an effect after its cause is removed"
     let word = await getWord();
     if(localStorage.length < 1) {
         localStorage.setItem(`word`, JSON.stringify(word));
@@ -244,8 +245,9 @@ setInterval(async function() {
 }, 100);
 
 
-
 async function loadPage() {
+    passed = false;
+    passed2 = false;
     let val = await getCurr();
     let cat = await getAllCat();
     cat = cat.categories;
