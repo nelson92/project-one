@@ -31,6 +31,19 @@ header {
     color: black
 }
 
+#T h2 button{
+    margin-left: 10px;
+    color: black;
+    font-size: 16px;
+    border: solid 2px black;
+    background-color: transparent;
+    border-radius: 10px;
+}
+
+#T h2 button:hover {
+    opacity: 50%;
+}
+
 
 #SB {
     display: flex;
@@ -160,7 +173,7 @@ header {
     width: 50%;
     margin-left: 0%;
     margin-right: 0%;
-    justify-content: flex-start;
+    justify-content: flex-end;
     align-items: flex-end;
 }
 
@@ -271,6 +284,9 @@ header {
 }
 
 @media screen and (max-width: 550px) {
+    #T h2 button{
+        margin-left: 0px;
+    }
     .N-C-N {
         height: 245px;
         width: 100%;
