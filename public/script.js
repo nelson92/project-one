@@ -34,8 +34,8 @@ const H1 = document.querySelector('#H1');
 const wordBox = document.querySelector('#W-C-W');
 const defBox = document.querySelector('#W-C-D');
 
-const searchBtn = document.querySelector('#S-S-B');
-const inputVal = document.querySelector('#S-S-I');
+const searchBtn = document.querySelector('#SB-S-B');
+const inputVal = document.querySelector('#SB-S-I');
 
 let today = moment();
 
