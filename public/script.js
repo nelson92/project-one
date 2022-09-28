@@ -34,6 +34,11 @@ const H1 = document.querySelector('#H1');
 const wordBox = document.querySelector('#W-C-W');
 const defBox = document.querySelector('#W-C-D');
 
+const favoriteWordDisplay = document.querySelector('#wordFavorite');
+const favoriteDefinitionDisplay = document.querySelector('#definitionFavorite');
+const favoriteWordDisplayPrev = document.querySelector('#favoriteWordPrev');
+const favoriteWordDisplayNext = document.querySelector('#favoriteWordNext');
+
 const searchBtn = document.querySelector('#S-S-B');
 const inputVal = document.querySelector('#S-S-I');
 
@@ -139,7 +144,8 @@ async function getWord() {
         const response = await fetch(apiUrl);
         const data = await response.json();
         passed3 = true;
-        return data;
+        console.log(data);
+             return data;
     } catch {
         console.log("error");
     }
@@ -212,36 +218,229 @@ function setPage(currStore) {
 }
 
 
+wordArrayPosition = JSON.parse(localStorage.getItem('newWordPosition')) || 0;
+let wordArray = [];
+let definitionArray = [];
+let wordsFavorite = [];
+let definitionsFavorites = [];
+let wordsFavoritePosition = 0;
+
+
+
 async function loadWord() {
     let word = await getWord();
-    if(localStorage.length < 1) {
-        localStorage.setItem(`word`, JSON.stringify(word));
-        localStorage.setItem('date', JSON.stringify(today.format("MMM Do, YYYY")))
-        wordBox.innerText = `Word: ${word.word}`;
-        defBox.innerText = `Definition: ${word.definition}`;
-    }
-    if(localStorage.length >= 1) {
-        let check = JSON.parse(localStorage.getItem('word'));
-        let date = JSON.parse(localStorage.getItem('date'));
-        if (date == today.format("MMM Do, YYYY")) {
-            wordBox.innerText = `Word: ${check[0].word}`;
-            defBox.innerText = `Definition: ${check[0].definition}`;
-        }
-        if (date != today.format("MMM Do, YYYY")) {
-            localStorage.clear();
-            localStorage.setItem(`word`, JSON.stringify(word));
-            localStorage.setItem('date', JSON.stringify(today.format("MMM Do, YYYY")))
-            wordBox.innerText = `Word: ${word.word}`;
-            defBox.innerText = `Definition: ${word.definition}`;
-        }
 
+   
+    wordArray = JSON.parse(localStorage.getItem('wordsList')) || [];
+    definitionArray = JSON.parse(localStorage.getItem('definitionsList')) || [];
+    
+    if(wordArray.length === 0) {
+    wordArray.push(word[0].word);
+    definitionArray.push(word[0].definition);
     }
+
+    console.log(wordArray);
+    console.log(definitionArray);
+
+    localStorage.setItem('wordsList',JSON.stringify(wordArray));
+    localStorage.setItem('definitionsList',JSON.stringify(definitionArray));
+
+    wordBox.innerText = "Word: " + wordArray[wordArrayPosition];
+    defBox.innerText = "Definition: " + definitionArray[wordArrayPosition];
+
+
+
+    // if(localStorage.length < 1) {
+    //     localStorage.setItem(`word`, JSON.stringify(word));
+    //     localStorage.setItem('date', JSON.stringify(today.format("MMM Do, YYYY")))
+    //     wordBox.innerText = `Word: ${word.word}`;
+    //     defBox.innerText = `Definition: ${word.definition}`;
+    // }
+    // if(localStorage.length >= 1) {
+    //     let check = JSON.parse(localStorage.getItem('word'));
+    //     let date = JSON.parse(localStorage.getItem('date'));
+    //     if (date == today.format("MMM Do, YYYY")) {
+    //         wordBox.innerText = `Word: ${check[0].word}`;
+    //         defBox.innerText = `Definition: ${check[0].definition}`;
+    //     }
+    //     if (date != today.format("MMM Do, YYYY")) {
+    //         localStorage.clear();
+    //         localStorage.setItem(`word`, JSON.stringify(word));
+    //         localStorage.setItem('date', JSON.stringify(today.format("MMM Do, YYYY")))
+    //         wordBox.innerText = `Word: ${word.word}`;
+    //         defBox.innerText = `Definition: ${word.definition}`;
+    //     }
+
+    // }
 }
 
-//Allows new word to be loaded at midnight
-setInterval(async function() {
-    loadWord();
-}, 100);
+
+async function nextWordButton () {
+    wordArrayPosition ++;
+    let word= await getWord();
+
+    console.log(word);
+    console.log(wordArrayPosition);
+    console.log(wordArray[wordArrayPosition]);
+
+
+    if(wordArray[(wordArrayPosition)] == undefined) {
+        wordArray.push(word[0].word);
+        definitionArray.push(word[0].definition);
+        localStorage.setItem('wordsList',JSON.stringify(wordArray));
+        localStorage.setItem('definitionsList',JSON.stringify(definitionArray));
+    }
+
+    localStorage.setItem('newWordPosition',JSON.stringify(wordArrayPosition));
+    wordBox.innerText = "Word: " + wordArray[wordArrayPosition];
+    defBox.innerText = "Definition: " + definitionArray[wordArrayPosition];
+
+
+
+}
+
+async function prevWordButton () {
+
+    wordArrayPosition --;
+
+
+    let word= await getWord();
+
+    console.log(word);
+    console.log(wordArrayPosition);
+    console.log(wordArray[wordArrayPosition]);
+
+
+    if(wordArray[(wordArrayPosition)] == undefined) {
+        wordArrayPosition = 0;
+        wordArray.unshift(word[0].word);
+        definitionArray.unshift(word[0].definition);
+        localStorage.setItem('wordsList',JSON.stringify(wordArray));
+        localStorage.setItem('definitionsList',JSON.stringify(definitionArray));
+    }
+
+    localStorage.setItem('newWordPosition',JSON.stringify(wordArrayPosition));
+    wordBox.innerText = "Word: " + wordArray[wordArrayPosition];
+    defBox.innerText = "Definition: " + definitionArray[wordArrayPosition];
+}
+
+
+let nextButton = document.querySelector('#wordNext');
+nextButton.addEventListener("click", nextWordButton);
+
+let prevButton = document.querySelector('#wordPrev');
+prevButton.addEventListener("click", prevWordButton);
+
+let saveWord = document.querySelector('#wordSave');
+saveWord.addEventListener("click", addWord);
+
+let removeWord = document.querySelector('#wordRemove');
+removeWord.addEventListener("click",removeWordFavorites);
+
+function addWord() {
+
+    if (wordsFavorite[0] == "Start by saving a favorite word ! :) ") {
+        wordsFavorite = [];
+        definitionsFavorites = [];
+    }
+
+    if (!wordsFavorite.includes(wordArray[wordArrayPosition])) {
+        wordsFavorite.push(wordArray[wordArrayPosition]);
+        definitionsFavorites.push(definitionArray[wordArrayPosition]);
+    
+        localStorage.setItem("favoriteWords",JSON.stringify(wordsFavorite));
+        localStorage.setItem("favoriteDefinitions", JSON.stringify(definitionsFavorites))
+    
+        displayFavoriteWord()
+    }
+
+
+}
+
+
+function displayFavoriteWord() {
+
+    wordsFavoritePosition = JSON.parse(localStorage.getItem('favoritePosition')) || 0;
+
+    wordsFavorite= JSON.parse(localStorage.getItem('favoriteWords')) || ["Start by saving a favorite word ! :) " ]
+
+    definitionsFavorites = JSON.parse(localStorage.getItem('favoriteDefinitions')) || ["Start by saving a favorite word ! :) " ];
+
+    favoriteWordDisplay.innerText = "Word : " + wordsFavorite[wordsFavoritePosition];
+    favoriteDefinitionDisplay.innerText = "Definition: " + definitionsFavorites[wordsFavoritePosition];
+
+}
+
+
+function removeWordFavorites() {
+    wordsFavorite.splice(wordsFavoritePosition,1);
+    definitionsFavorites.splice(wordsFavoritePosition,1);
+
+    localStorage.setItem("favoriteWords",JSON.stringify(wordsFavorite));
+    localStorage.setItem("favoriteDefinitions", JSON.stringify(definitionsFavorites))
+
+
+    if (wordsFavoritePosition > 0) {
+        wordsFavoritePosition --
+    }
+
+    favoriteWordDisplay.innerText = "Word : " + wordsFavorite[wordsFavoritePosition];
+    favoriteDefinitionDisplay.innerText = "Definition: " + definitionsFavorites[wordsFavoritePosition];
+
+    localStorage.setItem('favoritePosition',JSON.stringify(wordsFavoritePosition));
+}
+
+
+function nextFavoriteButton() {
+
+    if(wordsFavoritePosition == ((wordsFavorite.length)-1)) {
+        wordsFavoritePosition = 0
+    }
+    else {
+        wordsFavoritePosition ++;
+    }
+
+    favoriteWordDisplay.innerText = "Word : " + wordsFavorite[wordsFavoritePosition];
+    favoriteDefinitionDisplay.innerText = "Definition: " + definitionsFavorites[wordsFavoritePosition];
+
+    localStorage.setItem('favoritePosition',JSON.stringify(wordsFavoritePosition));
+}
+
+
+function prevFavoriteButton() {
+
+    
+    if(wordsFavoritePosition == 0) {
+        wordsFavoritePosition = ((wordsFavorite.length)-1)
+    }
+    else {
+        wordsFavoritePosition --;
+    }
+  
+    favoriteWordDisplay.innerText = "Word : " + wordsFavorite[wordsFavoritePosition];
+    favoriteDefinitionDisplay.innerText = "Definition: " + definitionsFavorites[wordsFavoritePosition];
+
+     localStorage.setItem('favoritePosition',JSON.stringify(wordsFavoritePosition));
+}
+
+favoriteWordDisplayNext.addEventListener("click", nextFavoriteButton);
+favoriteWordDisplayPrev.addEventListener("click", prevFavoriteButton);
+
+favoriteWordDisplay
+favoriteDefinitionDisplay
+favoriteWordDisplayPrev 
+favoriteWordDisplayNext
+
+
+
+
+
+
+
+// Allows new word to be loaded at midnight
+// setInterval(async function() {
+//     loadWord();
+// }, 100);
 
 
 
@@ -270,6 +469,9 @@ async function loadPage() {
 }
 
 loadPage();
+loadWord();
+displayFavoriteWord();
+
 
 
 nextBtn.addEventListener('click', function() {

@@ -71,8 +71,14 @@ header {
 .content {
     display: block;
     height: 100px;
+    display:flex;
+    flex-direction:row;
 }
 
+.content button {
+    color:darkblue;
+    background-color:lightpink;
+}
 
 #W {
     display: flex; 
