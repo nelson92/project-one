@@ -35,3 +35,5 @@ let toggleNav = function() {
         toggleNavStatus = false;
     }
 }
+
+//toggleNav();

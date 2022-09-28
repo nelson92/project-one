@@ -34,13 +34,17 @@ const H1 = document.querySelector('#H1');
 const wordBox = document.querySelector('#W-C-W');
 const defBox = document.querySelector('#W-C-D');
 
+
+
+
 const favoriteWordDisplay = document.querySelector('#wordFavorite');
 const favoriteDefinitionDisplay = document.querySelector('#definitionFavorite');
 const favoriteWordDisplayPrev = document.querySelector('#favoriteWordPrev');
 const favoriteWordDisplayNext = document.querySelector('#favoriteWordNext');
 
-const searchBtn = document.querySelector('#S-S-B');
-const inputVal = document.querySelector('#S-S-I');
+
+const searchBtn = document.querySelector('#SB-S-B');
+const inputVal = document.querySelector('#SB-S-I');
 
 let today = moment();
 
@@ -228,6 +232,7 @@ let wordsFavoritePosition = 0;
 
 
 async function loadWord() {
+    //Persistence is "the continuance of an effect after its cause is removed"
     let word = await getWord();
 
    
@@ -443,8 +448,9 @@ favoriteWordDisplayNext
 // }, 100);
 
 
-
 async function loadPage() {
+    passed = false;
+    passed2 = false;
     let val = await getCurr();
     let cat = await getAllCat();
     cat = cat.categories;
