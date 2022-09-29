@@ -410,17 +410,6 @@ favoriteWordDisplayPrev
 favoriteWordDisplayNext
 
 
-
-
-
-
-
-// Allows new word to be loaded at midnight
-// setInterval(async function() {
-//     loadWord();
-// }, 100);
-
-
 async function loadPage() {
     passed = false;
     passed2 = false;
@@ -431,13 +420,11 @@ async function loadPage() {
     cat = cat.categories;
     let loadCat;
     let loc = location.href.split("?");
-    console.log(loc);
     if (loc.length == 2 && passed2 == true ) {
         setCat(cat);
         loadCat = loc[1].split('=');
         if (loadCat[0] == "catagories") {
             loadCat = loadCat [1];
-            console.log(loadCat);
             let catData = await getCat(loadCat);
             if (passed3 == true) {
                 pageIndex = 0;
@@ -456,7 +443,7 @@ async function loadPage() {
                         currStore[currStore.length] = catData.news[i];
                     }
                 }
-                console.log(currStore);
+                //console.log(currStore);
                 extra = currStore.length % boxes;
                 totalPages = (currStore.length - extra) / 6;
                 //console.log(totalPages);
@@ -465,16 +452,19 @@ async function loadPage() {
                     nextBtn[1].style.display = 'none';
                 }
                 resetBack();
-                setPage(currStore);
+                if(currPage > totalPages) {
+                    currStore = [];
+                }
+                if(currPage <= totalPages) {
+                    setPage(currStore);
+                }
             }
         }
         if (loadCat[0] == "search") {
-            console.log("yes");
             passed4 = false;
             let input = loadCat[1];
             let data = await getSearch(input);
             avail.innerText = "Availible"
-            console.log(data);
             if (passed4 == true && data.news.length >= 6) {
                 pageIndex = 0;
                 currStore = []
@@ -492,7 +482,7 @@ async function loadPage() {
                         currStore[currStore.length] = data.news[i];
                     }
                 }
-                console.log(currStore);
+                //console.log(currStore);
                 extra = currStore.length % boxes;
                 totalPages = (currStore.length - extra) / 6;
                 //console.log(totalPages);
@@ -501,7 +491,12 @@ async function loadPage() {
                     nextBtn[1].style.display = 'none';
                 }
                 resetBack();
-                setPage(currStore);
+                if(currPage > totalPages) {
+                    currStore = [];
+                }
+                if(currPage <= totalPages) {
+                    setPage(currStore);
+                }
             }
         }
     } else {
@@ -525,7 +520,7 @@ async function loadPage() {
                 currStore[currStore.length] = val.news[i];
             }
         }
-        console.log(currStore);
+        //console.log(currStore);
         extra = currStore.length % boxes;
         totalPages = (currStore.length - extra) / 6;
         if(currPage == totalPages) {
@@ -533,7 +528,12 @@ async function loadPage() {
             nextBtn[1].style.display = 'none';
         }
         resetBack();
-        setPage(currStore);
+        if(currPage > totalPages) {
+            currStore = [];
+        }
+        if(currPage <= totalPages) {
+            setPage(currStore);
+        }
     }
 }
 
@@ -630,27 +630,27 @@ function resetBack() {
     for(let i = 0; i < 6; i++) {
         if(i == 0) {
             box1.style.backgroundImage = `none`
-            T1.innerText = `${currStore[0 + pageIndex].title}`
+            T1.innerText = `Not Available`
         }
         if(i == 1) {
             box2.style.backgroundImage = `none`
-            T2.innerText = `${currStore[1 + pageIndex].title}`
+            T2.innerText = `Not Available`
         }
         if(i == 2) {
             box3.style.backgroundImage = `none`
-            T3.innerText = `${currStore[2 + pageIndex].title}`
+            T3.innerText = `Not Available`
         }
         if(i == 3) {
             box4.style.backgroundImage = `none`
-            T4.innerText = `${currStore[3 + pageIndex].title}`
+            T4.innerText = `Not Available`
         }
         if(i == 4) {
             box5.style.backgroundImage = `none`
-            T5.innerText = `${currStore[4 + pageIndex].title}`
+            T5.innerText = `Not Available`
         }
         if(i == 5) {
             box6.style.backgroundImage = `none`
-            T6.innerText = `${currStore[5 + pageIndex].title}`
+            T6.innerText = `Not Available`
         }
     }
 }
@@ -692,44 +692,10 @@ box6.addEventListener("click", function() {
 
 H1.addEventListener("click", async function() {
     H1.setAttribute('href', `./index.html`);
-    passed == false
-    passed2 == false
-    let val = await getCurr();
-    let cat = await getAllCat();
-    cat = cat.categories;
-    if (passed == true && passed2 == true) {
-        let currStore = [];
-        currPage = 1;
-        pageIndex = 0;
-        setCat(cat);
-        if(currPage == 1) {
-            preBtn[0].style.display = 'none';
-            preBtn[1].style.display = 'none';
-            btnBox[0].style.justifyContent = 'flex-end'
-            btnBox[1].style.justifyContent = 'flex-end'
-            nextBtn[0].style.display = 'block';
-            nextBtn[1].style.display = 'block';
-        }
-        for(let i = 0; i < val.news.length; i++) {
-            if(val.news[i].image != "None"){
-                currStore[currStore.length] = val.news[i];
-            }
-        }
-        console.log(currStore);
-        extra = currStore.length % boxes;
-        totalPages = (currStore.length - extra) / 6;
-        if(currPage == totalPages) {
-            nextBtn[0].style.display = 'none';
-            nextBtn[1].style.display = 'none';
-        }
-        resetBack();
-        setPage(currStore);
-    }
 })
 
 
 C1.addEventListener("click", async function() {
-    //let loc = location.href;
     let check = location.href.split("?");
     if (check.length == 1) {
         location.href = check[0] + `?catagories=${C1.value}`;
