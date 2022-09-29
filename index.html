@@ -32,21 +32,24 @@
     <!--bootstrap CDN-->
 
     <!-- CSS only -->
+    <!--
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
       crossorigin="anonymous"
     />
+    -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
     <!-- JavaScript Bundle with Popper -->
+    <!--
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
       crossorigin="anonymous"
-    ></script>
+    ></script>-->
   </head>
   <body>
     <header>
@@ -56,8 +59,9 @@
         <div id="SB">
           <div id="SB-S">
             <input id="SB-S-I" type="text" placeholder="Input" />
-            <br />
+            <!--<br />-->
             <button id="SB-S-B">Search</button>
+            <div id="SB-S-A"></div>
           </div>
         </div>
       </div>
@@ -108,31 +112,45 @@
     </aside>
 
     <div class="content">
-      <div id="W">
-        <div id="W-C">
-          <div id="W-C-T">Word Generator</div>
-          <div id="W-C-W">Word: Word</div>
-          <div id="W-C-D">Definiton: Word</div>
-          <button id="wordPrev">"Prev"</button>
-          <button id="wordNext">"Next"</button>
-          <button id="wordSave">Save Word to Favorites</button>
+      <div id="FML">
+        <div class="W">
+          <div class="W-C">
+            <div class="W-C-T">Word Generator</div>
+            <div id="W-C-W" class="W-C-W">Word: Word</div>
+            <div id="W-C-D" class="W-C-D">Definiton: Word</div>
+          </div>
+        </div>
+        <div class="W">
+          <div class="W-C">
+            <div class="W-C-T">Favorite Words</div>
+            <div class="W-C-W" id="wordFavorite">Word: Word</div>
+            <div class="W-C-D" id="definitionFavorite">Definiton: Word</div>
+          </div>
         </div>
       </div>
-      <div id="W">
-        <div id="W-C">
-          <div id="W-C-T">Favorite Words </div>
-          <div id="wordFavorite">Word: Word</div>
-          <div id="definitionFavorite">Definiton: Word</div>
-          <button id="favoriteWordPrev">"Prev"</button>
-          <button id="favoriteWordNext">"Next"</button>
-          <button id="wordRemove">Remove Word from Favorites</button>
+      <div class="bigBtnBox">
+        <div class="btnBox">
+          <button class="Wbtn" id="wordPrev">"Prev"</button>
+          <button class="Wbtn" id="wordNext">"Next"</button>
+          <button class="Wbtn" id="wordSave">
+            Save Word
+            <!--to Favorites-->
+          </button>
+        </div>
+        <div class="btnBox">
+          <button class="Wbtn" id="favoriteWordPrev">"Prev"</button>
+          <button class="Wbtn" id="favoriteWordNext">"Next"</button>
+          <button class="Wbtn" id="wordRemove">
+            Remove Word
+            <!--from Favorites
+            class="PB"-->
+          </button>
         </div>
       </div>
     </div>
-    
-    <div id="P">
-      <button id="P-P" class="PB">Previous</button>
-      <button id="P-N" class="PB">Next</button>
+    <div id="P1" class="P">
+      <button class="P-P PB">⬅</button>
+      <button class="P-N PB">⮕</button>
     </div>
     <div class="content">
       <div id="N" class="content">
@@ -157,6 +175,10 @@
           </div>
         </div>
       </div>
+    </div>
+    <div id="P2" class="P">
+      <button class="P-P PB">⬅</button>
+      <button class="P-N PB">⮕</button>
     </div>
   </body>
 

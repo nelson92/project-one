@@ -12,9 +12,10 @@ const T5 = document.querySelector('#B5T');
 const T6 = document.querySelector('#B6T');
 
 
-const btnBox = document.querySelector('#P');
-const preBtn =  document.querySelector('#P-P');
-const nextBtn =  document.querySelector('#P-N');
+const btnBox = document.getElementsByClassName('P');
+const preBtn =  document.getElementsByClassName('P-P');
+const nextBtn =  document.getElementsByClassName('P-N');
+
 
 
 const C1 = document.querySelector('#C1');
@@ -31,6 +32,7 @@ const C11 = document.querySelector('#C11');
 const H1 = document.querySelector('#H1');
 
 
+
 const wordBox = document.querySelector('#W-C-W');
 const defBox = document.querySelector('#W-C-D');
 
@@ -45,6 +47,7 @@ const favoriteWordDisplayNext = document.querySelector('#favoriteWordNext');
 
 const searchBtn = document.querySelector('#SB-S-B');
 const inputVal = document.querySelector('#SB-S-I');
+const avail = document.querySelector('#SB-S-A');
 
 let today = moment();
 
@@ -53,6 +56,7 @@ let passed =  false;
 let passed2 =  false;
 let passed3 = false;
 let passed4 = false;
+let passedCat = false;
 
 
 
@@ -60,30 +64,22 @@ searchBtn.addEventListener("click", async function() {
     passed4 = false;
     let input = inputVal.value;
     let data = await getSearch(input);
+    let check = location.href.split("?");
     if (passed4 == true && data.news.length >= 6) {
-        pageIndex = 0;
-        currStore = []
-        currPage = 1;
-        if(currPage == 1) {
-            preBtn.style.display = 'none';
-            btnBox.style.justifyContent = 'flex-end'
-            nextBtn.style.display = 'block';
-        }
-        for(let i = 0; i < data.news.length; i++) {
-            if(data.news[i].image != "None"){
-                currStore[currStore.length] = data.news[i];
-            }
-        }
-        console.log(currStore);
-        extra = currStore.length % boxes;
-        totalPages = (currStore.length - extra) / 6;
-        if(currPage == totalPages) {
-            nextBtn.style.display = 'none';
-        }
-        resetBack();
-        setPage(currStore);
+        if (check.length == 1) {
 
+            location.href = check[0] + `?search=${input}`;
+        }
+        if (check.length == 2) {
+            location.href = check[0] + `?search=${input}`;
+        }
+    } else {
+        avail.innerText = "";
+        setTimeout(function() {
+            avail.innerText = "Not Availible";
+        }, 500);
     }
+    
 })
 
 
@@ -134,6 +130,7 @@ async function getSearch(value) {
         const apiUrl = `https://api.currentsapi.services/v1/search?keywords=${value}&apiKey=${currAPI}`;
         const response = await fetch(apiUrl);
         const data = await response.json();
+        console.log(data)
         passed4 = true;
         return data;
     } catch {
@@ -253,30 +250,6 @@ async function loadWord() {
     wordBox.innerText = "Word: " + wordArray[wordArrayPosition];
     defBox.innerText = "Definition: " + definitionArray[wordArrayPosition];
 
-
-
-    // if(localStorage.length < 1) {
-    //     localStorage.setItem(`word`, JSON.stringify(word));
-    //     localStorage.setItem('date', JSON.stringify(today.format("MMM Do, YYYY")))
-    //     wordBox.innerText = `Word: ${word.word}`;
-    //     defBox.innerText = `Definition: ${word.definition}`;
-    // }
-    // if(localStorage.length >= 1) {
-    //     let check = JSON.parse(localStorage.getItem('word'));
-    //     let date = JSON.parse(localStorage.getItem('date'));
-    //     if (date == today.format("MMM Do, YYYY")) {
-    //         wordBox.innerText = `Word: ${check[0].word}`;
-    //         defBox.innerText = `Definition: ${check[0].definition}`;
-    //     }
-    //     if (date != today.format("MMM Do, YYYY")) {
-    //         localStorage.clear();
-    //         localStorage.setItem(`word`, JSON.stringify(word));
-    //         localStorage.setItem('date', JSON.stringify(today.format("MMM Do, YYYY")))
-    //         wordBox.innerText = `Word: ${word.word}`;
-    //         defBox.innerText = `Definition: ${word.definition}`;
-    //     }
-
-    // }
 }
 
 
@@ -451,15 +424,101 @@ favoriteWordDisplayNext
 async function loadPage() {
     passed = false;
     passed2 = false;
-    let val = await getCurr();
+    passed3 = false;
+    passed4 = false;
+    passedCat = false;
     let cat = await getAllCat();
     cat = cat.categories;
-    if (passed == true && passed2 == true) {
+    let loadCat;
+    let loc = location.href.split("?");
+    console.log(loc);
+    if (loc.length == 2 && passed2 == true ) {
+        setCat(cat);
+        loadCat = loc[1].split('=');
+        if (loadCat[0] == "catagories") {
+            loadCat = loadCat [1];
+            console.log(loadCat);
+            let catData = await getCat(loadCat);
+            if (passed3 == true) {
+                pageIndex = 0;
+                currStore = []
+                currPage = 1;
+                if(currPage == 1) {
+                    preBtn[0].style.display = 'none';
+                    preBtn[1].style.display = 'none';
+                    btnBox[0].style.justifyContent = 'flex-end'
+                    btnBox[1].style.justifyContent = 'flex-end'
+                    nextBtn[0].style.display = 'block';
+                    nextBtn[1].style.display = 'block';
+                }
+                for(let i = 0; i < catData.news.length; i++) {
+                    if(catData.news[i].image != "None"){
+                        currStore[currStore.length] = catData.news[i];
+                    }
+                }
+                console.log(currStore);
+                extra = currStore.length % boxes;
+                totalPages = (currStore.length - extra) / 6;
+                //console.log(totalPages);
+                if(currPage == totalPages) {
+                    nextBtn[0].style.display = 'none';
+                    nextBtn[1].style.display = 'none';
+                }
+                resetBack();
+                setPage(currStore);
+            }
+        }
+        if (loadCat[0] == "search") {
+            console.log("yes");
+            passed4 = false;
+            let input = loadCat[1];
+            let data = await getSearch(input);
+            avail.innerText = "Availible"
+            console.log(data);
+            if (passed4 == true && data.news.length >= 6) {
+                pageIndex = 0;
+                currStore = []
+                currPage = 1;
+                if(currPage == 1) {
+                    preBtn[0].style.display = 'none';
+                    preBtn[1].style.display = 'none';
+                    btnBox[0].style.justifyContent = 'flex-end'
+                    btnBox[1].style.justifyContent = 'flex-end'
+                    nextBtn[0].style.display = 'block';
+                    nextBtn[1].style.display = 'block';
+                }
+                for(let i = 0; i < data.news.length; i++) {
+                    if(data.news[i].image != "None"){
+                        currStore[currStore.length] = data.news[i];
+                    }
+                }
+                console.log(currStore);
+                extra = currStore.length % boxes;
+                totalPages = (currStore.length - extra) / 6;
+                //console.log(totalPages);
+                if(currPage == totalPages) {
+                    nextBtn[0].style.display = 'none';
+                    nextBtn[1].style.display = 'none';
+                }
+                resetBack();
+                setPage(currStore);
+            }
+        }
+    } else {
+        passedCat = true;
+    }
+
+    let val = await getCurr();
+    if (passed == true && passed2 == true && passedCat == true) {
         currStore = new Array();
         setCat(cat);
         if(currPage == 1) {
-            preBtn.style.display = 'none';
-            btnBox.style.justifyContent = 'flex-end'
+            preBtn[0].style.display = 'none';
+            preBtn[1].style.display = 'none';
+            btnBox[0].style.justifyContent = 'flex-end'
+            btnBox[1].style.justifyContent = 'flex-end'
+            nextBtn[0].style.display = 'block';
+            nextBtn[1].style.display = 'block';
         }
         for(let i = 0; i < val.news.length; i++) {
             if(val.news[i].image != "None"){
@@ -469,6 +528,10 @@ async function loadPage() {
         console.log(currStore);
         extra = currStore.length % boxes;
         totalPages = (currStore.length - extra) / 6;
+        if(currPage == totalPages) {
+            nextBtn[0].style.display = 'none';
+            nextBtn[1].style.display = 'none';
+        }
         resetBack();
         setPage(currStore);
     }
@@ -480,39 +543,87 @@ displayFavoriteWord();
 
 
 
-nextBtn.addEventListener('click', function() {
+nextBtn[0].addEventListener('click', function() {
     if(currPage < totalPages) {
         currPage += 1;
         pageIndex += 6;
         if(currPage > 1) {
-            preBtn.style.display = 'block';
-            btnBox.style.justifyContent = 'space-between'
+            preBtn[0].style.display = 'block';
+            preBtn[1].style.display = 'block';
+            btnBox[0].style.justifyContent = 'space-between'
+            btnBox[1].style.justifyContent = 'space-between'
         }
         if(currPage == totalPages) {
-            nextBtn.style.display = 'none';
+            nextBtn[0].style.display = 'none';
+            nextBtn[1].style.display = 'none';
         }
         resetBack();
         setPage(currStore);
-
     }
 })
 
-preBtn.addEventListener('click', function() {
+preBtn[0].addEventListener('click', function() {
     if(currPage != 1) {
         currPage -= 1;
         pageIndex -= 6;
         if(currPage < totalPages) {
-            nextBtn.style.display = 'block';
+            nextBtn[0].style.display = 'block';
+            nextBtn[1].style.display = 'block';
         }
         if(currPage == 1) {
-            preBtn.style.display = 'none';
-            btnBox.style.justifyContent = 'flex-end'
+            preBtn[0].style.display = 'none';
+            preBtn[1].style.display = 'none';
+            btnBox[0].style.justifyContent = 'flex-end'
+            btnBox[1].style.justifyContent = 'flex-end'
         }
         resetBack();
         setPage(currStore);
 
     }
 })
+
+
+
+
+nextBtn[1].addEventListener('click', function() {
+    if(currPage < totalPages) {
+        currPage += 1;
+        pageIndex += 6;
+        if(currPage > 1) {
+            preBtn[0].style.display = 'block';
+            preBtn[1].style.display = 'block';
+            btnBox[0].style.justifyContent = 'space-between'
+            btnBox[1].style.justifyContent = 'space-between'
+        }
+        if(currPage == totalPages) {
+            nextBtn[0].style.display = 'none';
+            nextBtn[1].style.display = 'none';
+        }
+        resetBack();
+        setPage(currStore);
+    }
+})
+
+preBtn[1].addEventListener('click', function() {
+    if(currPage != 1) {
+        currPage -= 1;
+        pageIndex -= 6;
+        if(currPage < totalPages) {
+            nextBtn[0].style.display = 'block';
+            nextBtn[1].style.display = 'block';
+        }
+        if(currPage == 1) {
+            preBtn[0].style.display = 'none';
+            preBtn[1].style.display = 'none';
+            btnBox[0].style.justifyContent = 'flex-end'
+            btnBox[1].style.justifyContent = 'flex-end'
+        }
+        resetBack();
+        setPage(currStore);
+
+    }
+})
+
 
 
 function resetBack() {
@@ -543,6 +654,8 @@ function resetBack() {
         }
     }
 }
+
+
 
 
 box1.addEventListener("click", function() {
@@ -578,6 +691,7 @@ box6.addEventListener("click", function() {
 
 
 H1.addEventListener("click", async function() {
+    H1.setAttribute('href', `./index.html`);
     passed == false
     passed2 == false
     let val = await getCurr();
@@ -589,9 +703,12 @@ H1.addEventListener("click", async function() {
         pageIndex = 0;
         setCat(cat);
         if(currPage == 1) {
-            preBtn.style.display = 'none';
-            btnBox.style.justifyContent = 'flex-end'
-            nextBtn.style.display = 'block';
+            preBtn[0].style.display = 'none';
+            preBtn[1].style.display = 'none';
+            btnBox[0].style.justifyContent = 'flex-end'
+            btnBox[1].style.justifyContent = 'flex-end'
+            nextBtn[0].style.display = 'block';
+            nextBtn[1].style.display = 'block';
         }
         for(let i = 0; i < val.news.length; i++) {
             if(val.news[i].image != "None"){
@@ -602,7 +719,8 @@ H1.addEventListener("click", async function() {
         extra = currStore.length % boxes;
         totalPages = (currStore.length - extra) / 6;
         if(currPage == totalPages) {
-            nextBtn.style.display = 'none';
+            nextBtn[0].style.display = 'none';
+            nextBtn[1].style.display = 'none';
         }
         resetBack();
         setPage(currStore);
@@ -611,321 +729,114 @@ H1.addEventListener("click", async function() {
 
 
 C1.addEventListener("click", async function() {
-    passed3 = false;
-    let cat = await getCat(C1.value);
-    if (passed3 == true) {
-        pageIndex = 0;
-        currStore = []
-        currPage = 1;
-        if(currPage == 1) {
-            preBtn.style.display = 'none';
-            btnBox.style.justifyContent = 'flex-end'
-            nextBtn.style.display = 'block';
-        }
-        for(let i = 0; i < cat.news.length; i++) {
-            if(cat.news[i].image != "None"){
-                currStore[currStore.length] = cat.news[i];
-            }
-        }
-        console.log(currStore);
-        extra = currStore.length % boxes;
-        totalPages = (currStore.length - extra) / 6;
-        if(currPage == totalPages) {
-            nextBtn.style.display = 'none';
-        }
-        resetBack();
-        setPage(currStore);
-
+    //let loc = location.href;
+    let check = location.href.split("?");
+    if (check.length == 1) {
+        location.href = check[0] + `?catagories=${C1.value}`;
+    }
+    if (check.length == 2) {
+        location.href = check[0] + `?catagories=${C1.value}`;
     }
 })
 
 C2.addEventListener("click", async function() {
-    passed3 = false;
-    let cat = await getCat(C2.value);
-    if (passed3 == true) {
-        pageIndex = 0;
-        currStore = []
-        currPage = 1;
-        if(currPage == 1) {
-            preBtn.style.display = 'none';
-            btnBox.style.justifyContent = 'flex-end'
-        }
-        for(let i = 0; i < cat.news.length; i++) {
-            if(cat.news[i].image != "None"){
-                currStore[currStore.length] = cat.news[i];
-            }
-        }
-        console.log(currStore);
-        extra = currStore.length % boxes;
-        totalPages = (currStore.length - extra) / 6;
-        if(currPage == totalPages) {
-            nextBtn.style.display = 'none';
-        }
-        resetBack();
-        setPage(currStore);
-
+    let check = location.href.split("?");
+    if (check.length == 1) {
+        location.href = check[0] + `?catagories=${C2.value}`;
+    }
+    if (check.length == 2) {
+        location.href = check[0] + `?catagories=${C2.value}`;
     }
 })
 
 C3.addEventListener("click", async function() {
-    passed3 = false;
-    let cat = await getCat(C3.value);
-    if (passed3 == true) {
-        pageIndex = 0;
-        currStore = []
-        currPage = 1;
-        if(currPage == 1) {
-            preBtn.style.display = 'none';
-            btnBox.style.justifyContent = 'flex-end'
-            nextBtn.style.display = 'block';
-        }
-        for(let i = 0; i < cat.news.length; i++) {
-            if(cat.news[i].image != "None"){
-                currStore[currStore.length] = cat.news[i];
-            }
-        }
-        console.log(currStore);
-        extra = currStore.length % boxes;
-        totalPages = (currStore.length - extra) / 6;
-        if(currPage == totalPages) {
-            nextBtn.style.display = 'none';
-        }
-        resetBack();
-        setPage(currStore);
-
+    let check = location.href.split("?");
+    if (check.length == 1) {
+        location.href = check[0] + `?catagories=${C3.value}`;
+    }
+    if (check.length == 2) {
+        location.href = check[0] + `?catagories=${C3.value}`;
     }
 })
 
 C4.addEventListener("click", async function() {
-    passed3 = false;
-    let cat = await getCat(C4.value);
-    if (passed3 == true) {
-        pageIndex = 0;
-        currStore = []
-        currPage = 1;
-        if(currPage == 1) {
-            preBtn.style.display = 'none';
-            btnBox.style.justifyContent = 'flex-end'
-            nextBtn.style.display = 'block';
-        }
-        for(let i = 0; i < cat.news.length; i++) {
-            if(cat.news[i].image != "None"){
-                currStore[currStore.length] = cat.news[i];
-            }
-        }
-        console.log(currStore);
-        extra = currStore.length % boxes;
-        totalPages = (currStore.length - extra) / 6;
-        if(currPage == totalPages) {
-            nextBtn.style.display = 'none';
-        }
-        resetBack();
-        setPage(currStore);
-
+    let check = location.href.split("?");
+    if (check.length == 1) {
+        location.href = check[0] + `?catagories=${C4.value}`;
+    }
+    if (check.length == 2) {
+        location.href = check[0] + `?catagories=${C4.value}`;
     }
 })
 
 C5.addEventListener("click", async function() {
-    passed3 = false;
-    let cat = await getCat(C5.value);
-    if (passed3 == true) {
-        pageIndex = 0;
-        currStore = []
-        currPage = 1;
-        if(currPage == 1) {
-            preBtn.style.display = 'none';
-            btnBox.style.justifyContent = 'flex-end'
-            nextBtn.style.display = 'block';
-        }
-        for(let i = 0; i < cat.news.length; i++) {
-            if(cat.news[i].image != "None"){
-                currStore[currStore.length] = cat.news[i];
-            }
-        }
-        console.log(currStore);
-        extra = currStore.length % boxes;
-        totalPages = (currStore.length - extra) / 6;
-        if(currPage == totalPages) {
-            nextBtn.style.display = 'none';
-        }
-        resetBack();
-        setPage(currStore);
-
+    let check = location.href.split("?");
+    if (check.length == 1) {
+        location.href = check[0] + `?catagories=${C5.value}`;
+    }
+    if (check.length == 2) {
+        location.href = check[0] + `?catagories=${C5.value}`;
     }
 })
 
 C6.addEventListener("click", async function() {
-    passed3 = false;
-    let cat = await getCat(C6.value);
-    if (passed3 == true) {
-        pageIndex = 0;
-        currStore = []
-        currPage = 1;
-        if(currPage == 1) {
-            preBtn.style.display = 'none';
-            btnBox.style.justifyContent = 'flex-end'
-            nextBtn.style.display = 'block';
-        }
-        for(let i = 0; i < cat.news.length; i++) {
-            if(cat.news[i].image != "None"){
-                currStore[currStore.length] = cat.news[i];
-            }
-        }
-        console.log(currStore);
-        extra = currStore.length % boxes;
-        totalPages = (currStore.length - extra) / 6;
-        if(currPage == totalPages) {
-            nextBtn.style.display = 'none';
-        }
-        resetBack();
-        setPage(currStore);
-
+    let check = location.href.split("?");
+    if (check.length == 1) {
+        location.href = check[0] + `?catagories=${C6.value}`;
+    }
+    if (check.length == 2) {
+        location.href = check[0] + `?catagories=${C6.value}`;
     }
 })
 
 C7.addEventListener("click", async function() {
-    passed3 = false;
-    let cat = await getCat(C7.value);
-    if (passed3 == true) {
-        pageIndex = 0;
-        currStore = []
-        currPage = 1;
-        if(currPage == 1) {
-            preBtn.style.display = 'none';
-            btnBox.style.justifyContent = 'flex-end'
-            nextBtn.style.display = 'block';
-        }
-        for(let i = 0; i < cat.news.length; i++) {
-            if(cat.news[i].image != "None"){
-                currStore[currStore.length] = cat.news[i];
-            }
-        }
-        console.log(currStore);
-        extra = currStore.length % boxes;
-        totalPages = (currStore.length - extra) / 6;
-        if(currPage == totalPages) {
-            nextBtn.style.display = 'none';
-        }
-        resetBack();
-        setPage(currStore);
-
+    let check = location.href.split("?");
+    if (check.length == 1) {
+        location.href = check[0] + `?catagories=${C7.value}`;
+    }
+    if (check.length == 2) {
+        location.href = check[0] + `?catagories=${C7.value}`;
     }
 })
 
 C8.addEventListener("click", async function() {
-    passed3 = false;
-    let cat = await getCat(C8.value);
-    if (passed3 == true) {
-        pageIndex = 0;
-        currStore = []
-        currPage = 1;
-        if(currPage == 1) {
-            preBtn.style.display = 'none';
-            btnBox.style.justifyContent = 'flex-end'
-            nextBtn.style.display = 'block';
-        }
-        for(let i = 0; i < cat.news.length; i++) {
-            if(cat.news[i].image != "None"){
-                currStore[currStore.length] = cat.news[i];
-            }
-        }
-        console.log(currStore);
-        extra = currStore.length % boxes;
-        totalPages = (currStore.length - extra) / 6;
-        if(currPage == totalPages) {
-            nextBtn.style.display = 'none';
-        }
-        resetBack();
-        setPage(currStore);
-
+    let check = location.href.split("?");
+    if (check.length == 1) {
+        location.href = check[0] + `?catagories=${C8.value}`;
+    }
+    if (check.length == 2) {
+        location.href = check[0] + `?catagories=${C8.value}`;
     }
 })
 
 C9.addEventListener("click", async function() {
-    passed3 = false;
-    let cat = await getCat(C9.value);
-    if (passed3 == true) {
-        pageIndex = 0;
-        currStore = []
-        currPage = 1;
-        if(currPage == 1) {
-            preBtn.style.display = 'none';
-            btnBox.style.justifyContent = 'flex-end'
-            nextBtn.style.display = 'block';
-        }
-        for(let i = 0; i < cat.news.length; i++) {
-            if(cat.news[i].image != "None"){
-                currStore[currStore.length] = cat.news[i];
-            }
-        }
-        console.log(currStore);
-        extra = currStore.length % boxes;
-        totalPages = (currStore.length - extra) / 6;
-        if(currPage == totalPages) {
-            nextBtn.style.display = 'none';
-        }
-        resetBack();
-        setPage(currStore);
-
+    let check = location.href.split("?");
+    if (check.length == 1) {
+        location.href = check[0] + `?catagories=${C9.value}`;
+    }
+    if (check.length == 2) {
+        location.href = check[0] + `?catagories=${C9.value}`;
     }
 })
 
 C10.addEventListener("click", async function() {
-    passed3 = false;
-    let cat = await getCat(C10.value);
-    if (passed3 == true) {
-        pageIndex = 0;
-        currStore = []
-        currPage = 1;
-        if(currPage == 1) {
-            preBtn.style.display = 'none';
-            btnBox.style.justifyContent = 'flex-end'
-            nextBtn.style.display = 'block';
-        }
-        for(let i = 0; i < cat.news.length; i++) {
-            if(cat.news[i].image != "None"){
-                currStore[currStore.length] = cat.news[i];
-            }
-        }
-        console.log(currStore);
-        extra = currStore.length % boxes;
-        totalPages = (currStore.length - extra) / 6;
-        if(currPage == totalPages) {
-            nextBtn.style.display = 'none';
-        }
-        resetBack();
-        setPage(currStore);
-
+    let check = location.href.split("?");
+    if (check.length == 1) {
+        location.href = check[0] + `?catagories=${C10.value}`;
+    }
+    if (check.length == 2) {
+        location.href = check[0] + `?catagories=${C10.value}`;
     }
 })
 
 
 C11.addEventListener("click", async function() {
-    passed3 = false;
-    let cat = await getCat(C11.value);
-    if (passed3 == true) {
-        pageIndex = 0;
-        currStore = []
-        currPage = 1;
-        if(currPage == 1) {
-            preBtn.style.display = 'none';
-            btnBox.style.justifyContent = 'flex-end'
-            nextBtn.style.display = 'block';
-        }
-        for(let i = 0; i < cat.news.length; i++) {
-            if(cat.news[i].image != "None"){
-                currStore[currStore.length] = cat.news[i];
-            }
-        }
-        console.log(currStore);
-        extra = currStore.length % boxes;
-        totalPages = (currStore.length - extra) / 6;
-        if(currPage == totalPages) {
-            nextBtn.style.display = 'none';
-        }
-        resetBack();
-        setPage(currStore);
-
+    let check = location.href.split("?");
+    if (check.length == 1) {
+        location.href = check[0] + `?catagories=${C11.value}`;
+    }
+    if (check.length == 2) {
+        location.href = check[0] + `?catagories=${C11.value}`;
     }
 })
 

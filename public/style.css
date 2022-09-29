@@ -8,6 +8,7 @@ body {
 }
 
 header {
+    margin-top: -10px;
     text-align: center;
     position: absolute;
     display: flex;
@@ -15,7 +16,7 @@ header {
     height: 60px;
     background-color: white;
     color: black;
-    border: solid 2px green
+    /*border: solid 2px green*/
 }
 
 #T {
@@ -41,28 +42,31 @@ header {
 }
 
 #T h2 button:hover {
-    opacity: 50%;
+    opacity: 75%;
+    color: blue;
+    border: solid 2px blue;
 }
 
 
 #SB {
     display: flex;
     justify-content: flex-end;
-    border: solid 2px blue;
+    /*border: solid 2px blue;*/
     height: 60px;
     justify-content: center;
 }
 
 #SB-S {
     display: block;
+    padding-right: 7.5px;
     width: 100%;
     height: 60px
 }
 
 #SB-S-I{
-    margin-top: 0px;
-    width: 100%;
-    border: solid 1px black;
+    margin-top: 1.5px;
+    width: 97.5%;
+    border: solid .5px black;
     border-radius: 3px;
     color: black
 }
@@ -72,94 +76,192 @@ header {
     color: black;
     background-color: white;
     border-radius: 3px;
-    margin-top: 0px;
-    border: solid 1px black;
+    margin-top: 1px;
+    border: solid .5px black;
+    transition: all 0.3s ease-in-out;
 }
 
 #SB-S-B:hover{
-    opacity: 50%; 
+    opacity: 75%; 
+    color: blue;
+    border: solid 1px blue;
+
+}
+
+#SB-S-A {
+    color: black;
+    width: 99.5%;
+    border: solid .5px black;
+    border-radius: 3px;
+    margin-top: 1px;
+    height: 15px;
 }
 
 
 .content {
     display: block;
-    height: 100px;
+    /*height: 100px;*/
     display:flex;
-    flex-direction:row;
+    flex-wrap: wrap;
+    /*flex-direction:column;*/
 }
 
 .content button {
-    color:darkblue;
-    background-color:lightpink;
+    color: black;
+    /*background-color:lightpink;*/
 }
 
-#W {
-    display: flex; 
-    /*justify-content: center;*/
-    border: solid 2px green;
-    height: 150px;
-    width: 100%;
+#FML {
     margin-top: 90px;
+    /*border: solid 2px turquoise;*/
+    width: 100%;
+    height: 150px;
     margin-left: 60px;
+    display: flex;
+
+
 }
 
-#W-C {
-    border: solid 2px red;
-    width: 400px;
+.W {
+    display: flex; 
+    border-radius: 5px;
+    /*border: solid 2px green;*/
+    height: 150px;
+    width: 50%;
 }
 
-#W-C-T {
-    border: solid 2px blue;
+.W-C {
+    /*border: solid 2px red;*/
+    border: solid 1.5px blue;
+    border-radius: 20px;
+    width: 100%;
+}
+
+.W-C-T {
+    /*border: solid 1.5px blue;*/
+    padding: 5px;
     display: flex;
     justify-content: center;
 }
 
 
-#W-C-W {
-    border: solid 2px blue;
+.W-C-W {
+    /*border: solid 1.5px blue;*/
+    padding: 5px;
 }
 
-#W-C-D {
-    border: solid 2px blue;
+.W-C-D {
+    /*border: solid 1px blue;*/
+    padding: 5px;
     height: 75px;
 }
 
+.bigBtnBox {
+    width: 100%;
+    margin-left: 60px;
+    height: 100px;
+    margin-top: -10px;
+    /*background-color: green;*/
+    /*border: solid 1px blue;*/
+    border-top: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-#P {
-    border: solid 2px orange;
+}
+
+.btnBox {
+    color: white;
+    height: 100%;
+    margin-top: 0px;
+    width: 45%;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+    display: flex;
+    border: solid 1px blue;
+    border-radius: 20px;
+    border-top: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.Wbtn {
+    border: solid 1px black;
+    width: 30%;
+    height: 50px;
+    transition: all 0.3s ease-in-out;
+    border-radius: 5px;
+}
+
+.Wbtn:hover {
+    opacity: 75%;
+    color: blue;
+    border: solid 2px blue;
+}
+#wordSave {
+    width: 40%;
+}
+#wordRemove {
+    width: 40%;
+}
+
+
+.P {
+    border: solid 2px transparent;
+    border-radius: 5px;
+    padding: 5px;
+    padding-right: 20px;
+    padding-left: 20px;
     display: flex;
     justify-content: flex-end;
     margin-left: 60px;
-    margin-top: 180px;
+
 }
+
+#P1 {
+   margin-top: 90px;
+   margin-bottom: 10px;
+}
+
+#P2 {
+    margin-top: -20px;
+ }
 
 .PB {
     border: none;
     border-radius: 3px;
     background-color: white;
     color: black;
+    width: 100px;
+    height: 30px;
+    border: solid 1px black;
+    transition: all 0.3s ease-in-out;
+    border-radius: 5px;
 }
 
 .PB:hover {
-    opacity: 75%;
+    opacity: 75%; 
+    color: blue;
+    border: solid 2px blue;
 }
 
-#P-P {
+.P-P {
     display: none;
 }
 
 
 #N {
+
     display: flex;
     justify-content: center;
     margin-top: 0px;
-    border: solid 2px purple;
+    /*border: solid 2px purple;*/
     height: 1600px;
     width: 100%;
 }
 
 #N-C {
-    border: solid 2px red;
+    /*border: solid 2px red;*/
     width: 100%;
     margin-left: 57.5px;
     display: inline-flex;
@@ -167,29 +269,29 @@ header {
     flex-wrap: wrap;
 }
 
-
-#N-C-S-B:hover{
-    opacity: 75%;
-}
-
 .N-C-N {
     display: flex;
     height: 500px;
-    border: solid 2px green;
-    width: 50%;
+    width: 48.5%;
     margin-left: 0%;
     margin-right: 0%;
+    border: solid 2px blue;
+    border-radius: 50px;
     justify-content: flex-end;
     align-items: flex-end;
+    padding: 2.5px;
 }
 
 .N-C-N:hover{ 
     cursor: pointer;
+    opacity: 50%;
+    transition: opacity 0.50s;
 
 }
 
 .title{ 
     background-color: black;
+    font-size: 20px;
 
 }
 
@@ -197,30 +299,14 @@ header {
     background-size:contain, cover;
     background-position: center;
     background-repeat: no-repeat;
-}
-/*
-#B1 ,#B3{
-    margin-right: 5%;
-    margin-left: 5%;
+    /*margin-left: 5%;
+    margin-right: 5%;*/
 }
 
-#B2 ,#B4{
-    margin-left: 5%;
-    margin-right: 5%;
-}
-*/
-
-/*
-#B3 {
-    margin-right: 10%;
-}
-
-#B4 {
-    margin-left: 10%;
-}*/
-
-@media screen and (max-width: 1500px) {
-
+@media screen and (max-width: 1200px) {
+    #P2 {
+        margin-top: 5px;
+     }
 
     .N-C-N {
         height: 400px;
@@ -276,6 +362,11 @@ header {
 
 
 @media screen and (max-width: 700px) {
+    .title{ 
+        background-color: black;
+        font-size: 15px;
+    
+    }
     .N-C-N {
         height: 300px;
         width: 100%;

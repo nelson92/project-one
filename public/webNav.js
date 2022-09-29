@@ -24,7 +24,7 @@ let toggleNav = function() {
     //True
     else if (toggleNavStatus == true) {
         getSL.style.visibility = "visible";
-        getS.style.width = "60px";
+        getS.style.width = "58px";
         getSLIS.style.opacity = "0";
         
         for (let i = 0; i < getSLIA.length; i++) {
