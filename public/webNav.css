@@ -6,6 +6,8 @@ body {
 
 .M {
     position: fixed;
+    margin-left: -10px;
+    margin-top: -10px;
     width: 60px;
     height: 60px;
     background-color: white;
@@ -18,7 +20,7 @@ body {
 .M-BTN-TOG {
     text-align: center;
     color: white;
-    width: 70px;
+    width: 60px;
     height: 100%;
     background-color: black;
     background-image: url('./images/menu.png');
@@ -64,9 +66,9 @@ body {
     position: fixed;
     left: 0;
     bottom: 0;
-    width: 60px;
+    width: 58px;
     height: calc(100vh - 70px);
-    padding: 0 5px;
+    padding: 0 0px;
     background-color: #1b1b1b;
     z-index: 1000;
     transition: all 0.3s ease-in-out;
@@ -111,5 +113,6 @@ body {
 
 .S-L-I-A:hover {
     cursor: pointer;
+    color: blue;
 }
 /*Menu Navigation End*/
