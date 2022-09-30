@@ -1,7 +1,8 @@
 /*Menu Navigation Start*/
 
 body {
-    background-image: url('./images/background.jpg');
+    /* background-image: url('./images/background.jpg'); */
+    background-color: whitesmoke;
 }
 
 .M {
@@ -69,7 +70,7 @@ body {
     width: 58px;
     height: calc(100vh - 70px);
     padding: 0 0px;
-    background-color: #1b1b1b;
+    background-color: #1DA1F2;
     z-index: 1000;
     transition: all 0.3s ease-in-out;
     overflow:hidden;
