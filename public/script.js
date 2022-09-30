@@ -192,6 +192,7 @@ async function liveSports() {
 }
 
 
+
 let currStore = new Array();
 let boxes = 6;
 let currPage = 1;
@@ -265,20 +266,57 @@ let definitionsFavorites = [];
 let wordsFavoritePosition = 0;
 
 
-
+loadSports();
 
 async function loadSports() {
     let fact = await liveSports();
 
-    console.log(fact);
+    console.log( fact[0].scores);
+    var scoreText=document.querySelector('#scoreDisplay');
+    scoreText.innerText= fact[0].scores[0].name + " : " + fact[0].scores[0].score + " , " + fact[0].scores[1].name + " : " + fact[0].scores[1].score;
 
-    /* grab the text from the array
-    then create a loop with a timer to run through the loop, grab the next one, and then run again */
+    for (i=0;i<fact.length;i++) {
 
+        // -reset left function to make text appear on the right hand side of the page
+
+
+        if (!fact[i].scores[0].name) {
+
+
+
+    }
+
+        else {
+          scoreText.innerText= fact[i].scores[0].name + " : " + fact[i].scores[0].score + " , " + fact[i].scores[1].name + " : " + fact[i].scores[1].score;
+        scoreMovement();
+
+        scoreText.style.left = "1000px" ;
+
+        }
+        // -add in jquery to movement function
+        
+
+
+    }
+
+
+//after the loop ends, grab updated scores from API, and rerun the function again
 
 }
 
+// scoreMovement();
 
+function scoreMovement() {
+$('#scoreDisplay').animate({
+    left:-2000
+
+                            },
+    {duration:30000,
+    easing:"linear"         }
+
+)
+
+}
 
 
 
@@ -286,7 +324,6 @@ async function loadWord() {
     //Persistence is "the continuance of an effect after its cause is removed"
     let word = await getWord();
 
-    console.log(word);
     wordArray = JSON.parse(localStorage.getItem('wordsList')) || [];
     definitionArray = JSON.parse(localStorage.getItem('definitionsList')) || [];
     
@@ -626,7 +663,7 @@ loadPage();
 loadWord();
 displayFavoriteWord();
 liveSports();
-
+// scoreMovement();
 
 nextBtn[0].addEventListener('click', function() {
     if(currPage < totalPages) {
