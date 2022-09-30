@@ -464,7 +464,6 @@ async function loadPage() {
             passed4 = false;
             let input = loadCat[1];
             let data = await getSearch(input);
-            avail.innerText = "Availible"
             if (passed4 == true && data.news.length >= 6) {
                 pageIndex = 0;
                 currStore = []
@@ -688,6 +687,9 @@ box6.addEventListener("click", function() {
         window.open(`${currStore[5 + pageIndex].url}`)
     }
 })
+
+
+
 
 
 H1.addEventListener("click", async function() {
