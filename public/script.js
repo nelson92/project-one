@@ -76,7 +76,7 @@ searchBtn.addEventListener("click", async function() {
     } else {
         avail.innerText = "";
         setTimeout(function() {
-            avail.innerText = "Not Availible";
+            avail.innerText = "Not Available";
         }, 500);
     }
     
@@ -464,7 +464,7 @@ async function loadPage() {
             passed4 = false;
             let input = loadCat[1];
             let data = await getSearch(input);
-            avail.innerText = "Availible"
+            //  avail.innerText = "Availible"
             if (passed4 == true && data.news.length >= 6) {
                 pageIndex = 0;
                 currStore = []
