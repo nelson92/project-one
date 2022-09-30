@@ -172,18 +172,18 @@ header {
 }
 
 .Wbtn {
-    border: solid 1px black;
+    /* border: solid 1px black; */
     width: 30%;
     height: 50px;
     transition: all 0.3s ease-in-out;
-    border-radius: 5px;
+    /* border-radius: 5px; */
     background-color: white;
 }
 
 .Wbtn:hover {
     opacity: 75%;
     color: #1DA1F2;
-    border: solid 2px black;
+    /* border: solid 2px black; */
 }
 #wordSave {
     width: 40%;
@@ -215,15 +215,16 @@ header {
  }
 
 .PB {
-    border: none;
-    border-radius: 3px;
+    /* border: none; */
+    /* border-radius: 3px; */
     background-color: white;
     color: black;
     width: 100px;
     height: 30px;
-    border: solid 1px black;
+    /* border: solid 1px black; */
     transition: all 0.3s ease-in-out;
-    border-radius: 5px;
+    /* border-radius: 5px; */
+    
 }
 
 .PB:hover {
@@ -260,8 +261,8 @@ header {
     width: 48.5%;
     margin-left: 0%;
     margin-right: 0%;
-    border: solid 2px black;
-    border-radius: 50px;
+    /* border: solid 2px black; */
+    /* border-radius: 4%; */
     justify-content: flex-end;
     align-items: flex-end;
     padding: 2.5px;
