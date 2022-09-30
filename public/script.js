@@ -295,6 +295,14 @@ async function loadWord() {
     definitionArray.push(word.text);
     }
 
+    if(!wordsFavorite.length) {
+
+        favoriteWordDisplay.innerText = "Word : Please add favorites words to display :) " ;
+        favoriteDefinitionDisplay.innerText = "Definition: Please add favorites words to display :) " ;
+
+
+    }
+
     console.log(wordArray);
     console.log(definitionArray);
 
@@ -442,9 +450,17 @@ function nextFavoriteButton() {
         wordsFavoritePosition ++;
     }
 
+    if(!wordsFavorite.length) {
+
+        favoriteWordDisplay.innerText = "Word : Please add favorites words to display :) " ;
+        favoriteDefinitionDisplay.innerText = "Definition: Please add favorites words to display :) " ;
+
+
+    }
+    else{
     favoriteWordDisplay.innerText = "Word : " + wordsFavorite[wordsFavoritePosition];
     favoriteDefinitionDisplay.innerText = "Definition: " + definitionsFavorites[wordsFavoritePosition];
-
+    }
     localStorage.setItem('favoritePosition',JSON.stringify(wordsFavoritePosition));
 }
 
@@ -459,9 +475,18 @@ function prevFavoriteButton() {
         wordsFavoritePosition --;
     }
   
+    if(!wordsFavorite.length) {
+
+        favoriteWordDisplay.innerText = "Word : Please add favorites words to display :) " ;
+        favoriteDefinitionDisplay.innerText = "Definition: Please add favorites words to display :) " ;
+
+
+    }
+    else{
     favoriteWordDisplay.innerText = "Word : " + wordsFavorite[wordsFavoritePosition];
     favoriteDefinitionDisplay.innerText = "Definition: " + definitionsFavorites[wordsFavoritePosition];
-
+    }
+    
      localStorage.setItem('favoritePosition',JSON.stringify(wordsFavoritePosition));
 }
 
