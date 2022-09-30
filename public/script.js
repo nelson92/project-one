@@ -164,6 +164,32 @@ async function getWord() {
     }
 }
 
+const options1 = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '7c8f23f80fmsh449bc45b3c0f9bcp1d7ca7jsn8084675ac9df',
+		'X-RapidAPI-Host': 'odds.p.rapidapi.com'
+	}
+};
+
+async function liveSports() {
+    try {
+        const options = {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': '7c8f23f80fmsh449bc45b3c0f9bcp1d7ca7jsn8084675ac9df',
+                'X-RapidAPI-Host': 'coronavirus-monitor.p.rapidapi.com'
+            }
+        };
+        const response = await fetch('https://odds.p.rapidapi.com/v4/sports/americanfootball_nfl/scores?daysFrom=3', options1);
+        const data = await response.json();
+        passed3 = true;
+        console.log(data);
+             return data;
+    } catch {
+        console.log("error");
+    }
+}
 
 
 let currStore = new Array();
@@ -237,6 +263,22 @@ let definitionArray = [];
 let wordsFavorite = [];
 let definitionsFavorites = [];
 let wordsFavoritePosition = 0;
+
+
+
+
+async function loadSports() {
+    let fact = await liveSports();
+
+    console.log(fact);
+
+    /* grab the text from the array
+    then create a loop with a timer to run through the loop, grab the next one, and then run again */
+
+
+}
+
+
 
 
 
@@ -376,16 +418,17 @@ function removeWordFavorites() {
         wordsFavoritePosition --
     }
     
-    if(wordsFavorite.length === 0) {
+    if(!wordsFavorite.length) {
 
         favoriteWordDisplay.innerText = "Word : Please add favorites words to display :) " ;
         favoriteDefinitionDisplay.innerText = "Definition: Please add favorites words to display :) " ;
 
 
     }
+    else{
     favoriteWordDisplay.innerText = "Word : " + wordsFavorite[wordsFavoritePosition];
     favoriteDefinitionDisplay.innerText = "Definition: " + definitionsFavorites[wordsFavoritePosition];
-
+    }
     localStorage.setItem('favoritePosition',JSON.stringify(wordsFavoritePosition));
 }
 
@@ -557,7 +600,7 @@ async function loadPage() {
 loadPage();
 loadWord();
 displayFavoriteWord();
-
+liveSports();
 
 
 nextBtn[0].addEventListener('click', function() {

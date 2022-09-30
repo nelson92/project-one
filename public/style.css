@@ -29,8 +29,10 @@ header {
 
 #T h2 {
     margin-left: 60px;
-    color: black;
-    font-size: 18px;
+
+    /* color: black */
+
+
 }
 
 #catBtn{
@@ -59,7 +61,8 @@ header {
 }
 
 #SB-S {
-    display: block;
+    display: flex;
+    flex-direction:row;
     padding-right: 7.5px;
     width: 100%;
     height: 60px
@@ -129,7 +132,7 @@ header {
     padding: 5px;
     display: flex;
     justify-content: center;
-    font-weight: bold;
+    
 }
 
 
@@ -284,15 +287,28 @@ header {
     background-repeat: no-repeat;
 }
 
+/* 
+#bottomFooter {
+    background-color:darkgoldenrod;
+    position:relative;
+    height:20px;
+    bottom:-100px;
+    width:2500px;
+} */
+
+
 
 footer {
 background-color:#1DA1F2;
 height:150px;
-margin-top:60px;
+/* margin-top:60px; */
 text-align: center;
 font-size:40px;
-
+/* position:sticky; */
+bottom:0px;
 }
+
+
 
 footer h2 {
 font-size:15px;
