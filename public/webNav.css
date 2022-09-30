@@ -29,10 +29,11 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
 }
 
 .M-BTN-TOG:hover {
-    opacity: 0.5;
+    opacity: 0.75;
 }
 
 

@@ -16,7 +16,6 @@ header {
     height: 58px;
     background-color: white;
     color: black;
-    /*border: solid 2px green*/
 }
 
 
@@ -52,15 +51,14 @@ header {
 
 
 #SB {
+    margin-top: 5px;
     display: flex;
     justify-content: flex-end;
-    /*border: solid 2px blue;*/
     height: 60px;
     justify-content: center;
 }
 
 #SB-S {
-    /*margin-top: 1px;*/
     display: block;
     padding-right: 7.5px;
     width: 100%;
@@ -68,7 +66,6 @@ header {
 }
 
 #SB-S-I{
-    /*margin-top: 2.5px;*/
     width: 97.5%;
     border: solid .5px black;
     border-radius: 3px;
@@ -93,32 +90,19 @@ header {
 
 }
 
-/* #SB-S-A {
-    color: black;
-    width: 99.5%;
-    border: solid .5px black; 
-    border-radius: 3px;
-    margin-top: 1px;
-    height: 15px;
-} */
-
 
 .content {
     display: block;
-    /*height: 100px;*/
     display:flex;
     flex-wrap: wrap;
-    /*flex-direction:column;*/
 }
 
 .content button {
     color: black;
-    /*background-color:lightpink;*/
 }
 
 #FML {
     margin-top: 90px;
-    /*border: solid 2px turquoise;*/
     width: 100%;
     height: 150px;
     margin-left: 60px;
@@ -130,13 +114,11 @@ header {
 .W {
     display: flex; 
     border-radius: 5px;
-    /*border: solid 2px green;*/
     height: 150px;
     width: 50%;
 }
 
 .W-C {
-    /*border: solid 2px red;*/
     border: solid 1px black;
     border-radius: 20px;
     width: 100%;
@@ -144,7 +126,6 @@ header {
 }
 
 .W-C-T {
-    /*border: solid 1.5px blue;*/
     padding: 5px;
     display: flex;
     justify-content: center;
@@ -153,12 +134,10 @@ header {
 
 
 .W-C-W {
-    /*border: solid 1.5px blue;*/
     padding: 5px;
 }
 
 .W-C-D {
-    /*border: solid 1px blue;*/
     padding: 5px;
     height: 75px;
 }
@@ -168,8 +147,6 @@ header {
     margin-left: 60px;
     height: 100px;
     margin-top: -10px;
-    /*background-color: green;*/
-    /*border: solid 1px blue;*/
     border-top: none;
     display: flex;
     justify-content: center;
@@ -185,7 +162,6 @@ header {
     padding-left: 2.5%;
     padding-right: 2.5%;
     display: flex;
-    /* border: solid 1px black; */
     border-radius: 20px;
     border-top: none;
     justify-content: center;
@@ -263,13 +239,11 @@ header {
     display: flex;
     justify-content: center;
     margin-top: 0px;
-    /*border: solid 2px purple;*/
     height: 1600px;
     width: 100%;
 }
 
 #N-C {
-    /*border: solid 2px red;*/
     width: 100%;
     margin-left: 57.5px;
     display: inline-flex;
@@ -292,7 +266,7 @@ header {
 
 .N-C-N:hover{ 
     cursor: pointer;
-    opacity: 50%;
+    opacity: 75%;
     transition: opacity 0.50s;
 
 }
@@ -308,13 +282,11 @@ header {
     background-size:contain, cover;
     background-position: center;
     background-repeat: no-repeat;
-    /*margin-left: 5%;
-    margin-right: 5%;*/
 }
 
 @media screen and (max-width: 1200px) {
     #P2 {
-        margin-top: 5px;
+        margin-top: 30px;
      }
 
     .N-C-N {
