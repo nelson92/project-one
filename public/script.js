@@ -139,10 +139,22 @@ async function getSearch(value) {
 }
 
 
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '7c8f23f80fmsh449bc45b3c0f9bcp1d7ca7jsn8084675ac9df',
+		'X-RapidAPI-Host': 'numbersapi.p.rapidapi.com'
+	}
+};
+
 async function getWord() {
     try {
-        const apiUrl = `https://random-words-api.vercel.app/word?ref=publicapis.dev`;
-        const response = await fetch(apiUrl);
+        // const apiUrl = `https://lingua-robot.p.rapidapi.com/language/v1/entries/en/>`;
+        // const wordAPIKey = '7c8f23f80fmsh449bc45b3c0f9bcp1d7ca7jsn8084675ac9df';
+        // const APIHost= 'wordsapiv1.p.rapidapi.com';
+    
+        // const response = await fetch(apiUrl);
+        const response = await fetch('https://numbersapi.p.rapidapi.com/random/trivia?min=10&max=20&fragment=true&json=true', options);
         const data = await response.json();
         passed3 = true;
         console.log(data);
@@ -232,13 +244,13 @@ async function loadWord() {
     //Persistence is "the continuance of an effect after its cause is removed"
     let word = await getWord();
 
-   
+    console.log(word);
     wordArray = JSON.parse(localStorage.getItem('wordsList')) || [];
     definitionArray = JSON.parse(localStorage.getItem('definitionsList')) || [];
     
     if(wordArray.length === 0) {
-    wordArray.push(word[0].word);
-    definitionArray.push(word[0].definition);
+    wordArray.push(word.number);
+    definitionArray.push(word.text);
     }
 
     console.log(wordArray);
@@ -247,7 +259,7 @@ async function loadWord() {
     localStorage.setItem('wordsList',JSON.stringify(wordArray));
     localStorage.setItem('definitionsList',JSON.stringify(definitionArray));
 
-    wordBox.innerText = "Word: " + wordArray[wordArrayPosition];
+    wordBox.innerText = "Number: " + wordArray[wordArrayPosition];
     defBox.innerText = "Definition: " + definitionArray[wordArrayPosition];
 
 }
@@ -263,14 +275,14 @@ async function nextWordButton () {
 
 
     if(wordArray[(wordArrayPosition)] == undefined) {
-        wordArray.push(word[0].word);
-        definitionArray.push(word[0].definition);
+        wordArray.push(word.number);
+        definitionArray.push(word.text);
         localStorage.setItem('wordsList',JSON.stringify(wordArray));
         localStorage.setItem('definitionsList',JSON.stringify(definitionArray));
     }
 
     localStorage.setItem('newWordPosition',JSON.stringify(wordArrayPosition));
-    wordBox.innerText = "Word: " + wordArray[wordArrayPosition];
+    wordBox.innerText = "Fact: " + wordArray[wordArrayPosition];
     defBox.innerText = "Definition: " + definitionArray[wordArrayPosition];
 
 
@@ -291,14 +303,14 @@ async function prevWordButton () {
 
     if(wordArray[(wordArrayPosition)] == undefined) {
         wordArrayPosition = 0;
-        wordArray.unshift(word[0].word);
+        wordArray.unshift(word.text);
         definitionArray.unshift(word[0].definition);
         localStorage.setItem('wordsList',JSON.stringify(wordArray));
         localStorage.setItem('definitionsList',JSON.stringify(definitionArray));
     }
 
     localStorage.setItem('newWordPosition',JSON.stringify(wordArrayPosition));
-    wordBox.innerText = "Word: " + wordArray[wordArrayPosition];
+    wordBox.innerText = "Fact: " + wordArray[wordArrayPosition];
     defBox.innerText = "Definition: " + definitionArray[wordArrayPosition];
 }
 
@@ -317,7 +329,7 @@ removeWord.addEventListener("click",removeWordFavorites);
 
 function addWord() {
 
-    if (wordsFavorite[0] == "Start by saving a favorite word ! :) ") {
+    if (wordsFavorite[0] == "Start by saving a favorite fact ! :) ") {
         wordsFavorite = [];
         definitionsFavorites = [];
     }
@@ -328,7 +340,9 @@ function addWord() {
     
         localStorage.setItem("favoriteWords",JSON.stringify(wordsFavorite));
         localStorage.setItem("favoriteDefinitions", JSON.stringify(definitionsFavorites))
-    
+        
+        let wordsFavoritePosition = (wordsFavorite.length-1) || 0;
+        localStorage.setItem('favoritePosition',JSON.stringify(wordsFavoritePosition));
         displayFavoriteWord()
     }
 
@@ -340,11 +354,11 @@ function displayFavoriteWord() {
 
     wordsFavoritePosition = JSON.parse(localStorage.getItem('favoritePosition')) || 0;
 
-    wordsFavorite= JSON.parse(localStorage.getItem('favoriteWords')) || ["Start by saving a favorite word ! :) " ]
+    wordsFavorite= JSON.parse(localStorage.getItem('favoriteWords')) || ["Start by saving a favorite fact ! :) " ]
 
-    definitionsFavorites = JSON.parse(localStorage.getItem('favoriteDefinitions')) || ["Start by saving a favorite word ! :) " ];
+    definitionsFavorites = JSON.parse(localStorage.getItem('favoriteDefinitions')) || ["Start by saving a favorite fact ! :) " ];
 
-    favoriteWordDisplay.innerText = "Word : " + wordsFavorite[wordsFavoritePosition];
+    favoriteWordDisplay.innerText = "Fact: " + wordsFavorite[wordsFavoritePosition];
     favoriteDefinitionDisplay.innerText = "Definition: " + definitionsFavorites[wordsFavoritePosition];
 
 }
@@ -361,7 +375,14 @@ function removeWordFavorites() {
     if (wordsFavoritePosition > 0) {
         wordsFavoritePosition --
     }
+    
+    if(wordsFavorite.length === 0) {
 
+        favoriteWordDisplay.innerText = "Word : Please add favorites words to display :) " ;
+        favoriteDefinitionDisplay.innerText = "Definition: Please add favorites words to display :) " ;
+
+
+    }
     favoriteWordDisplay.innerText = "Word : " + wordsFavorite[wordsFavoritePosition];
     favoriteDefinitionDisplay.innerText = "Definition: " + definitionsFavorites[wordsFavoritePosition];
 
@@ -404,10 +425,7 @@ function prevFavoriteButton() {
 favoriteWordDisplayNext.addEventListener("click", nextFavoriteButton);
 favoriteWordDisplayPrev.addEventListener("click", prevFavoriteButton);
 
-favoriteWordDisplay
-favoriteDefinitionDisplay
-favoriteWordDisplayPrev 
-favoriteWordDisplayNext
+
 
 
 async function loadPage() {
