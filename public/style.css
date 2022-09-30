@@ -34,7 +34,7 @@ header {
 
 #T h2 {
     margin-left: 60px;
-    color: black
+    /* color: black */
 }
 
 #T h2 button{
@@ -149,7 +149,7 @@ header {
     padding: 5px;
     display: flex;
     justify-content: center;
-    font-weight: bold;
+    
 }
 
 
@@ -313,15 +313,28 @@ header {
     margin-right: 5%;*/
 }
 
+/* 
+#bottomFooter {
+    background-color:darkgoldenrod;
+    position:relative;
+    height:20px;
+    bottom:-100px;
+    width:2500px;
+} */
+
+
 
 footer {
 background-color:#1DA1F2;
 height:150px;
-margin-top:60px;
+/* margin-top:60px; */
 text-align: center;
 font-size:40px;
-
+/* position:sticky; */
+bottom:0px;
 }
+
+
 
 footer h2 {
 font-size:15px;

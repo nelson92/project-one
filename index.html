@@ -33,6 +33,7 @@
 
     <!-- CSS only -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!--\
@@ -58,7 +59,7 @@
     <header>
       <div id="T">
         <button id="catBtn" onclick="toggleNav()">Categories</button>
-        <h2>The Quatro: A Comprehensive Newsletter </h2>
+        <h2 class="font-bold tracking-wide text-sky-400 text-2xl underline decoration-purple-700 decoration-double decoration-4;">The Quatro: A Comprehensive Newsletter </h2>
         <!--searchbar-->
         <div id="SB">
           <div id="SB-S">
@@ -119,14 +120,14 @@
       <div id="FML">
         <div class="W">
           <div class="W-C">
-            <div class="W-C-T">Fact Generator</div>
+            <div class="W-C-T font-bold tracking-wide text-sky-400 text-2xl">Fact Generator</div>
             <div id="W-C-W" class="W-C-W">Number</div>
             <div id="W-C-D" class="W-C-D">Fact</div>
           </div>
         </div>
         <div class="W">
           <div class="W-C">
-            <div class="W-C-T">Favorite Facts</div>
+            <div class="W-C-T font-bold tracking-wide text-sky-400 text-2xl ">Favorite Facts</div>
             <div class="W-C-W" id="wordFavorite">Number</div>
             <div class="W-C-D" id="definitionFavorite">Fact</div>
           </div>
@@ -184,13 +185,19 @@
       <button class="P-P PB">⬅</button>
       <button class="P-N PB">⮕</button>
     </div>
+
+    <div id="bottomFooter">
+      <p>test</p>
+    </div>
   </body>
 
   <footer>
     <a href = "https://github.com/nelson92/project-one" target = "blank" class = "fa fa-github" alt="social media icon for personal github page"></a>
-    <h2>Presented by 'Team Quatro LLC' </h2>
-    <p> 177A Bleecker Street, New York City, NY 10012-1406</p>
-
+   
+      <h2 class = "first">Presented by 'Team Quatro LLC' </h2>
+      <p class = "second"> 177A Bleecker Street, New York City, NY 10012-1406</p>
+    
+    <p class = "third">test</p>
 
   </footer>
 
