@@ -80,15 +80,15 @@ body {
 
 .S:hover {
     overflow:hidden;
-    /* overflow-y: scroll; */
+    overflow-y: scroll;
     scroll-snap-type: y mandatory;
 }
 
 .S-L {
     padding-top: 16px;
-    /*
+    
     overflow:hidden;
-    visibility: hidden;*/
+    visibility: hidden;
 
 }
 
