@@ -86,11 +86,11 @@ body {
 }
 
 .S-L {
-    padding-top: 2vh;
-    /*
+    padding-top: 16px;
+    
     overflow:hidden;
     visibility: hidden;
-    */
+
 }
 
 .S-L-I {

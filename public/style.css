@@ -48,17 +48,14 @@ header {
     border: solid 2px black;
 }
 
-#S {
-    overflow: hidden;
-}
-
 #SB {
     margin-top: 1vh;
     margin-bottom: 1vh;
     display: flex;
-    height: 12vh;
-    overflow: hidden;
-    border-bottom: 0.1vh solid black;
+    justify-content: flex-end;
+    height: 60px;
+    justify-content: center;
+ 
 }
 
 #SB-S {
@@ -98,7 +95,8 @@ header {
     opacity: 75%; 
     color: #1DA1F2;
     border: solid 1px black;
-    overflow: hidden;
+  
+
 }
 
 .content {
@@ -375,22 +373,23 @@ footer {
 background-color:#1DA1F2;
 height: 3vh;
 /* margin-top:60px; */
-font-size: 3vh;
-position: sticky;
-bottom: 0px;
-width: 100vw;
-overflow: hidden;
+font-size:40px;
+position:sticky;
+bottom:0px;
+width:100vw;
+overflow:hidden;
+text-align:center;
 }
 
 footer p {
-    font-size: 2vh;
-    color: white;
-    left: 2000px;
-    overflow-wrap: break-word;
-    white-space: pre;
-    overflow: hidden;
-    width: max-content;
-    position: relative;
+    font-size: 20px;
+    color:blueviolet;
+    left:2000px;
+    overflow-wrap:break-word;
+    white-space:pre;
+    overflow:hidden;
+    width:max-content;
+    position:relative;
 }
 
 .fa {
