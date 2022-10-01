@@ -79,14 +79,14 @@ searchBtn.addEventListener("click", async function() {
     } else {
         avail.innerText = "";
         setTimeout(function() {
-            avail.innerText = "Not Availible";
+            avail.innerText = "Not Available";
         }, 500);
     }
     
 })
 
 
-/* Start of the API section, including the key, and multiple different variations of pulls depending on catagory selected, random number fact API, and football scores API */
+/* Start of the API section, including the key, and multiple different variations of pulls depending on category selected, random number fact API, and football scores API */
 const currAPI = "zaSmIPDUx3iAmelqolvF17hSHrG1zCsLzuTjxKenPwJmUnBC"
 
 
@@ -773,7 +773,7 @@ box6.addEventListener("click", function() {
     }
 })
 
-/* Action items for when user selects a catagory from side nav */
+/* Action items for when user selects a category from side nav */
 H1.addEventListener("click", async function() {
     H1.setAttribute('href', `./index.html`);
 })
