@@ -51,13 +51,16 @@ header {
     border: solid 2px black;
 }
 
-
+#S {
+    overflow:hidden;
+}
 #SB {
     margin-top: 5px;
     display: flex;
     justify-content: flex-end;
     height: 60px;
     justify-content: center;
+    overflow:hidden;
 }
 
 #SB-S {
@@ -90,6 +93,7 @@ header {
     opacity: 75%; 
     color: #1DA1F2;
     border: solid 1px black;
+    overflow:hidden;
 
 }
 
@@ -316,17 +320,18 @@ font-size:40px;
 position:sticky;
 bottom:0px;
 width:100vw;
+overflow:hidden;
 }
 
 
 footer p {
     font-size: 20px;
     color:blueviolet;
-    left:1000px;
+    left:2000px;
     overflow-wrap:break-word;
     white-space:pre;
     overflow:hidden;
-    width:100vw;
+    width:max-content;
     position:relative;
 }
 

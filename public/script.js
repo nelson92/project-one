@@ -273,46 +273,53 @@ async function loadSports() {
 
     console.log( fact[0].scores);
     var scoreText=document.querySelector('#scoreDisplay');
-    scoreText.innerText= fact[0].scores[0].name + " : " + fact[0].scores[0].score + " , " + fact[0].scores[1].name + " : " + fact[0].scores[1].score;
+    // scoreText.innerText= fact[0].scores[0].name + " : " + fact[0].scores[0].score + " , " + fact[0].scores[1].name + " : " + fact[0].scores[1].score;
 
-    for (i=0;i<fact.length;i++) {
-
-        // -reset left function to make text appear on the right hand side of the page
+    for (i=0; i<fact.length; i++) {
 
 
-        if (!fact[i].scores[0].name) {
+        // if (i==(fact.lenth-1) && fact[i].scores==null) {
+        //     scoreText.style.left = "1000px" ;
+        //     console.log(i);
+        //     i=0;
+        //     continue;
+         
+        // }
+        
 
+       if ((fact[i].scores==null)) {
+            // scoreText.style.left = "1000px" ;
+            console.log(fact[i]);
+            scoreText.textContent += ""
 
+        // scoreMovement();
+        
+        scoreText.style.left = "1000px" ;
+             }
 
-    }
 
         else {
-          scoreText.innerText= fact[i].scores[0].name + " : " + fact[i].scores[0].score + " , " + fact[i].scores[1].name + " : " + fact[i].scores[1].score;
-        scoreMovement();
-
+            console.log("score",i);
+          scoreText.innerText+= fact[i].scores[0].name + " : " + fact[i].scores[0].score + " , " + fact[i].scores[1].name + " : " + fact[i].scores[1].score;
+        // scoreMovement();
+        
         scoreText.style.left = "1000px" ;
 
         }
-        // -add in jquery to movement function
-        
-
-
     }
-
-
-//after the loop ends, grab updated scores from API, and rerun the function again
-
+    scoreMovement();
 }
 
 // scoreMovement();
 
 function scoreMovement() {
-$('#scoreDisplay').animate({
-    left:-2000
+$('#scoreDisplay').removeAttr("style")
 
-                            },
-    {duration:30000,
-    easing:"linear"         }
+$('#scoreDisplay').animate({
+    left:-4500
+    }, 30000, "linear" ,
+        scoreMovement
+    
 
 )
 
