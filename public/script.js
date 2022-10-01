@@ -1,9 +1,14 @@
+
+
+/* Variables B for boxes, 6 total for news display */
 const box1 = document.querySelector('#B1');
 const box2 = document.querySelector('#B2');
 const box3 = document.querySelector('#B3');
 const box4 = document.querySelector('#B4');
 const box5 = document.querySelector('#B5');
 const box6 = document.querySelector('#B6');
+
+/* Variables BT for box titles for the text display for the news article headlines */
 const T1 = document.querySelector('#B1T');
 const T2 = document.querySelector('#B2T');
 const T3 = document.querySelector('#B3T');
@@ -11,13 +16,13 @@ const T4 = document.querySelector('#B4T');
 const T5 = document.querySelector('#B5T');
 const T6 = document.querySelector('#B6T');
 
-
+/* Variables for button classes */
 const btnBox = document.getElementsByClassName('P');
 const preBtn =  document.getElementsByClassName('P-P');
 const nextBtn =  document.getElementsByClassName('P-N');
 
 
-
+/* Variables C for categories for the nav bar selection */
 const C1 = document.querySelector('#C1');
 const C2 = document.querySelector('#C2');
 const C3 = document.querySelector('#C3');
@@ -32,26 +37,24 @@ const C11 = document.querySelector('#C11');
 const H1 = document.querySelector('#H1');
 
 
-
+/* Variables for the randomly generated number and fact display */
 const wordBox = document.querySelector('#W-C-W');
 const defBox = document.querySelector('#W-C-D');
 
+/* Variables for favorite number and fact display and buttons */
+const favoriteNumberDisplay = document.querySelector('#numberFavorite');
+const favoriteFactDisplay = document.querySelector('#factFavorite');
+const favoriteNumberDisplayPrev = document.querySelector('#favoriteNumberPrev');
+const favoriteNumberDisplayNext = document.querySelector('#favoriteNumberNext');
 
-
-
-const favoriteWordDisplay = document.querySelector('#wordFavorite');
-const favoriteDefinitionDisplay = document.querySelector('#definitionFavorite');
-const favoriteWordDisplayPrev = document.querySelector('#favoriteWordPrev');
-const favoriteWordDisplayNext = document.querySelector('#favoriteWordNext');
-
-
+/* Variables for search features */
 const searchBtn = document.querySelector('#SB-S-B');
 const inputVal = document.querySelector('#SB-S-I');
 const avail = document.querySelector('#SB-S-A');
 
 let today = moment();
 
-
+/* API pull test variables */
 let passed =  false;
 let passed2 =  false;
 let passed3 = false;
@@ -59,7 +62,7 @@ let passed4 = false;
 let passedCat = false;
 
 
-
+/* search button action item */
 searchBtn.addEventListener("click", async function() {
     passed4 = false;
     let input = inputVal.value;
@@ -83,7 +86,7 @@ searchBtn.addEventListener("click", async function() {
 })
 
 
-
+/* Start of the API section, including the key, and multiple different variations of pulls depending on catagory selected, random number fact API, and football scores API */
 const currAPI = "zaSmIPDUx3iAmelqolvF17hSHrG1zCsLzuTjxKenPwJmUnBC"
 
 
@@ -147,17 +150,12 @@ const options = {
 	}
 };
 
-async function getWord() {
+async function getNumber() {
     try {
-        // const apiUrl = `https://lingua-robot.p.rapidapi.com/language/v1/entries/en/>`;
-        // const wordAPIKey = '7c8f23f80fmsh449bc45b3c0f9bcp1d7ca7jsn8084675ac9df';
-        // const APIHost= 'wordsapiv1.p.rapidapi.com';
-    
-        // const response = await fetch(apiUrl);
         const response = await fetch('https://numbersapi.p.rapidapi.com/random/trivia?min=10&max=20&fragment=true&json=true', options);
         const data = await response.json();
         passed3 = true;
-        console.log(data);
+        // console.log(data);
              return data;
     } catch {
         console.log("error");
@@ -192,16 +190,7 @@ async function liveSports() {
 }
 
 
-
-let currStore = new Array();
-let boxes = 6;
-let currPage = 1;
-//if next page is clicked add 6 to the pageIndex
-let pageIndex = 0;
-//Total pages is set in the load function to count how many pages can be loaded
-let totalPages;
-let extra;
-
+/* variables for setting catagories in side nav bar */
 function setCat(cat) {
     C1.innerText = `${cat[0]}`;
     C1.value = `${cat[0]}`;
@@ -226,6 +215,16 @@ function setCat(cat) {
     C11.innerText = `${cat[10]}`;
     C11.value = `${cat[10]}`;
 }
+
+/* variables regarding news feed display and function */
+let currStore = new Array();
+let boxes = 6;
+let currPage = 1;
+//if next page is clicked add 6 to the pageIndex
+let pageIndex = 0;
+//Total pages is set in the load function to count how many pages can be loaded
+let totalPages;
+let extra;
 
 
 function setPage(currStore) {
@@ -258,41 +257,220 @@ function setPage(currStore) {
 }
 
 
-wordArrayPosition = JSON.parse(localStorage.getItem('newWordPosition')) || 0;
-let wordArray = [];
-let definitionArray = [];
-let wordsFavorite = [];
-let definitionsFavorites = [];
-let wordsFavoritePosition = 0;
+/* Variables and functions regarding number facts */
+numberArrayPosition = JSON.parse(localStorage.getItem('newNumberPosition')) || 0;
+let numberArray = [];
+let factArray = [];
+let numbersFavorite = [];
+let factsFavorites = [];
+let numbersFavoritePosition = 0;
+let nextButton = document.querySelector('#wordNext');
+let prevButton = document.querySelector('#wordPrev');
+let saveWord = document.querySelector('#wordSave');
+let removeWord = document.querySelector('#wordRemove');
+
+nextButton.addEventListener("click", nextWordButton);
+prevButton.addEventListener("click", prevWordButton);
+saveWord.addEventListener("click", addWord);
+removeWord.addEventListener("click",removeWordFavorites);
+favoriteNumberDisplayNext.addEventListener("click", nextFavoriteButton);
+favoriteNumberDisplayPrev.addEventListener("click", prevFavoriteButton);
+
+async function loadWord() {
+    //Persistence is "the continuance of an effect after its cause is removed"
+    let word = await getNumber();
+
+    numberArray = JSON.parse(localStorage.getItem('wordsList')) || [];
+    factArray = JSON.parse(localStorage.getItem('definitionsList')) || [];
+    
+    if(numberArray.length === 0) {
+    numberArray.push(word.number);
+    factArray.push(word.text);
+    }
+
+    if(!numbersFavorite.length) {
+
+        favoriteNumberDisplay.innerText = "Word : Please add favorites words to display :) " ;
+        favoriteFactDisplay.innerText = "Definition: Please add favorites words to display :) " ;
 
 
-loadSports();
+    }
 
+    // console.log(numberArray);
+    // console.log(factArray);
+
+    localStorage.setItem('wordsList',JSON.stringify(numberArray));
+    localStorage.setItem('definitionsList',JSON.stringify(factArray));
+
+    wordBox.innerText = "Number: " + numberArray[numberArrayPosition];
+    defBox.innerText = "Fact: " + factArray[numberArrayPosition];
+
+}
+
+
+async function nextWordButton () {
+    numberArrayPosition ++;
+    let word= await getNumber();
+
+    // console.log(word);
+    // console.log(numberArrayPosition);
+    // console.log(numberArray[numberArrayPosition]);
+
+
+    if(numberArray[(numberArrayPosition)] == undefined) {
+        numberArray.push(word.number);
+        factArray.push(word.text);
+        localStorage.setItem('wordsList',JSON.stringify(numberArray));
+        localStorage.setItem('definitionsList',JSON.stringify(factArray));
+    }
+
+    localStorage.setItem('newNumberPosition',JSON.stringify(numberArrayPosition));
+    wordBox.innerText = "Number " + numberArray[numberArrayPosition];
+    defBox.innerText = "Fact: " + factArray[numberArrayPosition];
+
+}
+
+async function prevWordButton () {
+
+    numberArrayPosition --;
+
+    let word= await getNumber();
+
+    // console.log(word);
+    // console.log(numberArrayPosition);
+    // console.log(numberArray[numberArrayPosition]);
+
+    if(numberArray[(numberArrayPosition)] == undefined) {
+        numberArrayPosition = 0;
+        numberArray.unshift(word.text);
+        factArray.unshift(word[0].definition);
+        localStorage.setItem('wordsList',JSON.stringify(numberArray));
+        localStorage.setItem('definitionsList',JSON.stringify(factArray));
+    }
+
+    localStorage.setItem('newNumberPosition',JSON.stringify(numberArrayPosition));
+    wordBox.innerText = "Number " + numberArray[numberArrayPosition];
+    defBox.innerText = "Fact: " + factArray[numberArrayPosition];
+}
+
+function addWord() {
+
+    if (numbersFavorite[0] == "Start by saving a favorite fact ! :) ") {
+        numbersFavorite = [];
+        factsFavorites = [];
+    }
+
+    if (!numbersFavorite.includes(numberArray[numberArrayPosition])) {
+        numbersFavorite.push(numberArray[numberArrayPosition]);
+        factsFavorites.push(factArray[numberArrayPosition]);
+    
+        localStorage.setItem("favoriteWords",JSON.stringify(numbersFavorite));
+        localStorage.setItem("favoriteDefinitions", JSON.stringify(factsFavorites))
+        
+        let numbersFavoritePosition = (numbersFavorite.length-1) || 0;
+        localStorage.setItem('favoritePosition',JSON.stringify(numbersFavoritePosition));
+        displayFavoriteWord()
+    }
+}
+
+function displayFavoriteWord() {
+
+    numbersFavoritePosition = JSON.parse(localStorage.getItem('favoritePosition')) || 0;
+
+    numbersFavorite= JSON.parse(localStorage.getItem('favoriteWords')) || ["Start by saving a favorite fact ! :) " ]
+
+    factsFavorites = JSON.parse(localStorage.getItem('favoriteDefinitions')) || ["Start by saving a favorite fact ! :) " ];
+
+    favoriteNumberDisplay.innerText = "Fact: " + numbersFavorite[numbersFavoritePosition];
+    favoriteFactDisplay.innerText = "Definition: " + factsFavorites[numbersFavoritePosition];
+
+}
+
+function removeWordFavorites() {
+    numbersFavorite.splice(numbersFavoritePosition,1);
+    factsFavorites.splice(numbersFavoritePosition,1);
+
+    localStorage.setItem("favoriteWords",JSON.stringify(numbersFavorite));
+    localStorage.setItem("favoriteDefinitions", JSON.stringify(factsFavorites))
+
+    if (numbersFavoritePosition > 0) {
+        numbersFavoritePosition --
+    }
+    
+    if(!numbersFavorite.length) {
+
+        favoriteNumberDisplay.innerText = "Word : Please add favorites words to display :) " ;
+        favoriteFactDisplay.innerText = "Definition: Please add favorites words to display :) " ;
+    }
+
+    else{
+    favoriteNumberDisplay.innerText = "Word : " + numbersFavorite[numbersFavoritePosition];
+    favoriteFactDisplay.innerText = "Definition: " + factsFavorites[numbersFavoritePosition];
+    }
+    localStorage.setItem('favoritePosition',JSON.stringify(numbersFavoritePosition));
+}
+
+function nextFavoriteButton() {
+
+    if(numbersFavoritePosition == ((numbersFavorite.length)-1)) {
+        numbersFavoritePosition = 0
+    }
+    else {
+        numbersFavoritePosition ++;
+    }
+
+    if(!numbersFavorite.length) {
+
+        favoriteNumberDisplay.innerText = "Word : Please add favorites words to display :) " ;
+        favoriteFactDisplay.innerText = "Definition: Please add favorites words to display :) " ;
+
+    }
+    else{
+    favoriteNumberDisplay.innerText = "Word : " + numbersFavorite[numbersFavoritePosition];
+    favoriteFactDisplay.innerText = "Definition: " + factsFavorites[numbersFavoritePosition];
+    }
+    localStorage.setItem('favoritePosition',JSON.stringify(numbersFavoritePosition));
+}
+
+function prevFavoriteButton() {
+
+    if(numbersFavoritePosition == 0) {
+        numbersFavoritePosition = ((numbersFavorite.length)-1)
+    }
+
+    else {
+        numbersFavoritePosition --;
+    }
+  
+    if(!numbersFavorite.length) {
+
+        favoriteNumberDisplay.innerText = "Word : Please add favorites words to display :) " ;
+        favoriteFactDisplay.innerText = "Definition: Please add favorites words to display :) " ;
+    }
+
+    else{
+    favoriteNumberDisplay.innerText = "Word : " + numbersFavorite[numbersFavoritePosition];
+    favoriteFactDisplay.innerText = "Definition: " + factsFavorites[numbersFavoritePosition];
+    }
+    
+     localStorage.setItem('favoritePosition',JSON.stringify(numbersFavoritePosition));
+}
+
+/* Variables and functions for nfl score display */
 async function loadSports() {
     let fact = await liveSports();
 
     console.log( fact[0].scores);
     var scoreText=document.querySelector('#scoreDisplay');
-    // scoreText.innerText= fact[0].scores[0].name + " : " + fact[0].scores[0].score + " , " + fact[0].scores[1].name + " : " + fact[0].scores[1].score;
 
     for (i=0; i<fact.length; i++) {
 
-
-        // if (i==(fact.lenth-1) && fact[i].scores==null) {
-        //     scoreText.style.left = "1000px" ;
-        //     console.log(i);
-        //     i=0;
-        //     continue;
-         
-        // }
-        
-
        if ((fact[i].scores==null)) {
-            // scoreText.style.left = "1000px" ;
-            console.log(fact[i]);
+       
+        
             scoreText.textContent += ""
 
-        // scoreMovement();
+
         
         scoreText.style.left = "1000px" ;
              }
@@ -300,8 +478,8 @@ async function loadSports() {
 
         else {
             console.log("score",i);
-          scoreText.innerText+= fact[i].scores[0].name + " : " + fact[i].scores[0].score + " , " + fact[i].scores[1].name + " : " + fact[i].scores[1].score;
-        // scoreMovement();
+          scoreText.innerText+=  "         " + fact[i].scores[0].name + " : " + fact[i].scores[0].score + " , " + fact[i].scores[1].name + " : " + fact[i].scores[1].score;
+   
         
         scoreText.style.left = "1000px" ;
 
@@ -309,8 +487,6 @@ async function loadSports() {
     }
     scoreMovement();
 }
-
-// scoreMovement();
 
 function scoreMovement() {
 $('#scoreDisplay').removeAttr("style")
@@ -320,226 +496,11 @@ $('#scoreDisplay').animate({
     }, 30000, "linear" ,
         scoreMovement
     
-
 )
-
 }
 
 
-
-async function loadWord() {
-    //Persistence is "the continuance of an effect after its cause is removed"
-    let word = await getWord();
-
-    wordArray = JSON.parse(localStorage.getItem('wordsList')) || [];
-    definitionArray = JSON.parse(localStorage.getItem('definitionsList')) || [];
-    
-    if(wordArray.length === 0) {
-    wordArray.push(word.number);
-    definitionArray.push(word.text);
-    }
-
-    if(!wordsFavorite.length) {
-
-        favoriteWordDisplay.innerText = "Word : Please add favorites words to display :) " ;
-        favoriteDefinitionDisplay.innerText = "Definition: Please add favorites words to display :) " ;
-
-
-    }
-
-    console.log(wordArray);
-    console.log(definitionArray);
-
-    localStorage.setItem('wordsList',JSON.stringify(wordArray));
-    localStorage.setItem('definitionsList',JSON.stringify(definitionArray));
-
-    wordBox.innerText = "Number: " + wordArray[wordArrayPosition];
-    defBox.innerText = "Definition: " + definitionArray[wordArrayPosition];
-
-}
-
-
-async function nextWordButton () {
-    wordArrayPosition ++;
-    let word= await getWord();
-
-    console.log(word);
-    console.log(wordArrayPosition);
-    console.log(wordArray[wordArrayPosition]);
-
-
-    if(wordArray[(wordArrayPosition)] == undefined) {
-        wordArray.push(word.number);
-        definitionArray.push(word.text);
-        localStorage.setItem('wordsList',JSON.stringify(wordArray));
-        localStorage.setItem('definitionsList',JSON.stringify(definitionArray));
-    }
-
-    localStorage.setItem('newWordPosition',JSON.stringify(wordArrayPosition));
-    wordBox.innerText = "Fact: " + wordArray[wordArrayPosition];
-    defBox.innerText = "Definition: " + definitionArray[wordArrayPosition];
-
-
-
-}
-
-async function prevWordButton () {
-
-    wordArrayPosition --;
-
-
-    let word= await getWord();
-
-    console.log(word);
-    console.log(wordArrayPosition);
-    console.log(wordArray[wordArrayPosition]);
-
-
-    if(wordArray[(wordArrayPosition)] == undefined) {
-        wordArrayPosition = 0;
-        wordArray.unshift(word.text);
-        definitionArray.unshift(word[0].definition);
-        localStorage.setItem('wordsList',JSON.stringify(wordArray));
-        localStorage.setItem('definitionsList',JSON.stringify(definitionArray));
-    }
-
-    localStorage.setItem('newWordPosition',JSON.stringify(wordArrayPosition));
-    wordBox.innerText = "Fact: " + wordArray[wordArrayPosition];
-    defBox.innerText = "Definition: " + definitionArray[wordArrayPosition];
-}
-
-
-let nextButton = document.querySelector('#wordNext');
-nextButton.addEventListener("click", nextWordButton);
-
-let prevButton = document.querySelector('#wordPrev');
-prevButton.addEventListener("click", prevWordButton);
-
-let saveWord = document.querySelector('#wordSave');
-saveWord.addEventListener("click", addWord);
-
-let removeWord = document.querySelector('#wordRemove');
-removeWord.addEventListener("click",removeWordFavorites);
-
-function addWord() {
-
-    if (wordsFavorite[0] == "Start by saving a favorite fact ! :) ") {
-        wordsFavorite = [];
-        definitionsFavorites = [];
-    }
-
-    if (!wordsFavorite.includes(wordArray[wordArrayPosition])) {
-        wordsFavorite.push(wordArray[wordArrayPosition]);
-        definitionsFavorites.push(definitionArray[wordArrayPosition]);
-    
-        localStorage.setItem("favoriteWords",JSON.stringify(wordsFavorite));
-        localStorage.setItem("favoriteDefinitions", JSON.stringify(definitionsFavorites))
-        
-        let wordsFavoritePosition = (wordsFavorite.length-1) || 0;
-        localStorage.setItem('favoritePosition',JSON.stringify(wordsFavoritePosition));
-        displayFavoriteWord()
-    }
-
-
-}
-
-
-function displayFavoriteWord() {
-
-    wordsFavoritePosition = JSON.parse(localStorage.getItem('favoritePosition')) || 0;
-
-    wordsFavorite= JSON.parse(localStorage.getItem('favoriteWords')) || ["Start by saving a favorite fact ! :) " ]
-
-    definitionsFavorites = JSON.parse(localStorage.getItem('favoriteDefinitions')) || ["Start by saving a favorite fact ! :) " ];
-
-    favoriteWordDisplay.innerText = "Fact: " + wordsFavorite[wordsFavoritePosition];
-    favoriteDefinitionDisplay.innerText = "Definition: " + definitionsFavorites[wordsFavoritePosition];
-
-}
-
-
-function removeWordFavorites() {
-    wordsFavorite.splice(wordsFavoritePosition,1);
-    definitionsFavorites.splice(wordsFavoritePosition,1);
-
-    localStorage.setItem("favoriteWords",JSON.stringify(wordsFavorite));
-    localStorage.setItem("favoriteDefinitions", JSON.stringify(definitionsFavorites))
-
-
-    if (wordsFavoritePosition > 0) {
-        wordsFavoritePosition --
-    }
-    
-    if(!wordsFavorite.length) {
-
-        favoriteWordDisplay.innerText = "Word : Please add favorites words to display :) " ;
-        favoriteDefinitionDisplay.innerText = "Definition: Please add favorites words to display :) " ;
-
-
-    }
-    else{
-    favoriteWordDisplay.innerText = "Word : " + wordsFavorite[wordsFavoritePosition];
-    favoriteDefinitionDisplay.innerText = "Definition: " + definitionsFavorites[wordsFavoritePosition];
-    }
-    localStorage.setItem('favoritePosition',JSON.stringify(wordsFavoritePosition));
-}
-
-
-function nextFavoriteButton() {
-
-    if(wordsFavoritePosition == ((wordsFavorite.length)-1)) {
-        wordsFavoritePosition = 0
-    }
-    else {
-        wordsFavoritePosition ++;
-    }
-
-    if(!wordsFavorite.length) {
-
-        favoriteWordDisplay.innerText = "Word : Please add favorites words to display :) " ;
-        favoriteDefinitionDisplay.innerText = "Definition: Please add favorites words to display :) " ;
-
-
-    }
-    else{
-    favoriteWordDisplay.innerText = "Word : " + wordsFavorite[wordsFavoritePosition];
-    favoriteDefinitionDisplay.innerText = "Definition: " + definitionsFavorites[wordsFavoritePosition];
-    }
-    localStorage.setItem('favoritePosition',JSON.stringify(wordsFavoritePosition));
-}
-
-
-function prevFavoriteButton() {
-
-    
-    if(wordsFavoritePosition == 0) {
-        wordsFavoritePosition = ((wordsFavorite.length)-1)
-    }
-    else {
-        wordsFavoritePosition --;
-    }
-  
-    if(!wordsFavorite.length) {
-
-        favoriteWordDisplay.innerText = "Word : Please add favorites words to display :) " ;
-        favoriteDefinitionDisplay.innerText = "Definition: Please add favorites words to display :) " ;
-
-
-    }
-    else{
-    favoriteWordDisplay.innerText = "Word : " + wordsFavorite[wordsFavoritePosition];
-    favoriteDefinitionDisplay.innerText = "Definition: " + definitionsFavorites[wordsFavoritePosition];
-    }
-    
-     localStorage.setItem('favoritePosition',JSON.stringify(wordsFavoritePosition));
-}
-
-favoriteWordDisplayNext.addEventListener("click", nextFavoriteButton);
-favoriteWordDisplayPrev.addEventListener("click", prevFavoriteButton);
-
-
-
-
+/* Functions for initial page loads, news paperer functions */
 async function loadPage() {
     passed = false;
     passed2 = false;
@@ -666,12 +627,8 @@ async function loadPage() {
     }
 }
 
-loadPage();
-loadWord();
-displayFavoriteWord();
-liveSports();
-// scoreMovement();
 
+/* Actions items for newspaper display buttons */
 nextBtn[0].addEventListener('click', function() {
     if(currPage < totalPages) {
         currPage += 1;
@@ -754,7 +711,7 @@ preBtn[1].addEventListener('click', function() {
 })
 
 
-
+/* Additional supporting function for newspaper display */
 function resetBack() {
     for(let i = 0; i < 6; i++) {
         if(i == 0) {
@@ -784,9 +741,7 @@ function resetBack() {
     }
 }
 
-
-
-
+/* Actions items for newspaper displays */
 box1.addEventListener("click", function() {
     if(currStore.length > 0) {
         window.open(`${currStore[0 + pageIndex].url}`)
@@ -818,10 +773,7 @@ box6.addEventListener("click", function() {
     }
 })
 
-
-
-
-
+/* Action items for when user selects a catagory from side nav */
 H1.addEventListener("click", async function() {
     H1.setAttribute('href', `./index.html`);
 })
@@ -937,6 +889,14 @@ C11.addEventListener("click", async function() {
         location.href = check[0] + `?catagories=${C11.value}`;
     }
 })
+
+
+loadPage();
+loadWord();
+displayFavoriteWord();
+liveSports();
+loadSports();
+
 
 
 
