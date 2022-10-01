@@ -133,41 +133,79 @@
     <div class="content">
 
       <div id="FML">
-        <div class="W">
-          <div class="W-C">
-            <div class="W-C-T font-bold tracking-wide text-sky-400 text-2xl">Fact Generator</div>
-            <div class="W-C-W"id="W-C-W">Number</div>
-            <div class="W-C-D" id="W-C-D">Fact</div>
+
+        <div id="outerDivWrapper">
+          <div id="outerDiv">
+            <div class="vertical-scroll" id="scrollableContent">
+              <div class="factsBorder">
+                <div class="W">
+                  <div class="W-C">
+                    <div class="W-C-T font-bold tracking-wide text-sky-400 text-2xl">Fact Generator</div>
+                    <div class="W-C-W" id="W-C-W">Number</div>
+                    <div class="W-C-D" id="W-C-D">Fact</div>
+                  </div>
+                </div>
+              </div>  
+            </div>
           </div>
         </div>
-        <div class="W">
-          <div class="W-C">
-            <div class="W-C-T font-bold tracking-wide text-sky-400 text-2xl ">Favorite Facts</div>
-            <div class="W-C-W" id="numberFavorite">Number</div>
-            <div class="W-C-D" id="factFavorite">Fact</div>
+
+          <div id="outerDivWrapper">
+            <div id="outerDiv">
+              <div class="vertical-scroll" id="scrollableContent">
+                <div class="factsBorder">
+                  <div class="W">
+                    <div class="W-C">
+                      <div class="W-C-T font-bold tracking-wide text-sky-400 text-2xl ">Favorite Facts</div>
+                      <div class="W-C-W" id="numberFavorite">Number</div>
+                      <div class="W-C-D" id="factFavorite">Fact</div>
+                    </div>
+                  </div>
+                </div>  
+              </div>
+            </div>
           </div>
-        </div>
+        </div>  
+
       </div>
+
       <div class="bigBtnBox">
-        <div class="btnBox">
-          <button class="Wbtn bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" id="wordPrev">Prev</button>
-          <button class="Wbtn bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" id="wordNext">Next</button>
-          <button class="Wbtn bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" id="wordSave">
-            Save Fact
-            <!--to Favorites-->
-          </button>
+
+        <div id="outerDivWrapper2">
+          <div id="outerDiv2">
+
+              <div class="btnBox">
+                <button class="Wbtn bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" id="wordPrev">Prev</button>
+                <button class="Wbtn bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" id="wordNext">Next</button>
+                <button class="Wbtn bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" id="wordSave">
+                    Save Fact
+                    <!--to Favorites-->
+                </button>
+              </div>
+
+          </div>
         </div>
-        <div class="btnBox">
-          <button class="Wbtn bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" id="favoriteNumberPrev">Prev</button>
-          <button class="Wbtn bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" id="favoriteNumberNext">Next</button>
-          <button class="Wbtn bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" id="wordRemove">
-            Remove Fact
-            <!--from Favorites
-            class="PB"-->
-          </button>
-        </div>
+
+        <div id="outerDivWrapper3">
+          <div id="outerDiv3">
+
+              <div class="btnBox">
+                <button class="Wbtn bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" id="favoriteNumberPrev">Prev</button>
+                <button class="Wbtn bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" id="favoriteNumberNext">Next</button>
+                <button class="Wbtn bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" id="wordRemove">
+                  Remove Fact
+                  <!--from Favorites
+                  class="PB"-->
+                </button>
+              </div>
+              
+            </div>
+          </div>
+
       </div>
+
     </div>
+
     <div id="P1" class="P">
       <button class="P-P PB bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded text-center">⬅</button>
       <button class="P-N PB bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded text-center">⮕</button>
@@ -226,5 +264,5 @@
 
   <script src="./public/webNav.js"></script>
   <script src="./public/script.js"></script>
-  
+
 </html>
