@@ -13,6 +13,7 @@
 
 body {
     display: grid;
+    background-color: var(--dutch-white);
 }
 
 header {
@@ -23,7 +24,6 @@ header {
     text-align: center;
     width: 100vw;
     justify-content: space-evenly;
-    /* align-items:baseline; */
 }
 
 /* Website Title Styling */
@@ -38,8 +38,6 @@ header {
     position: absolute;
     margin-left: auto;
     margin-right: auto;
-    /* left:50% */
-
 }
 
 .M {
