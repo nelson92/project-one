@@ -634,6 +634,16 @@ footer p {
         margin-right: 5vw;
     }
 
+    .W {
+        height: 300px;
+    }
+    .factsBorder {
+        height: 400px;
+    }
+    .bigBtnBox {
+        margin-top: 100px;
+    }
+
     .H h2 {
         font-size: 15px;
     }
@@ -670,9 +680,20 @@ footer p {
 }
 
 @media screen and (max-width: 600px) {
+    .W {
+        height: 300px;
+    }
+    .factsBorder {
+        height: 400px;
+    }
+    .bigBtnBox {
+        margin-top: 100px;
+    }
+
     .btnBox button{
         font-size: 9px;
     }
+
 
 }
 
@@ -711,5 +732,33 @@ footer p {
     }
     .btnBox button:focus{
         font-size: 8.25px;
+    }
+}
+
+
+@media screen and (max-width: 499px) {
+    .bigBtnBox {
+        margin-top: 100px;
+    }
+
+    .W {
+        font-size: 16px;
+        height: 400px
+    }
+    .factsBorder {
+        height: 500px;
+    }
+    .bigBtnBox {
+        margin-top: 200px;
+    }
+    .btnBox button{
+        padding: 0;
+        font-size: 7px;
+    }
+    .btnBox button:hover{
+        font-size: 7px;
+    }
+    .btnBox button:focus{
+        font-size: 7px;
     }
 }
