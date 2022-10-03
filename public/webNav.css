@@ -1,10 +1,16 @@
-body {
-    background-color: white;
+/* Color Palette */
+
+:root {
+    --deep-champagne: #F3CEA1;
+    --dutch-white: #F3DFC1;
+    --eerie-black: #1A1C1A;
 }
 
+/* Hamburger Menu Icon */
+
 .M {
-    display: inline-block;
     cursor: grab;
+    display: inline-block;
     margin-top: 1vh;
     margin-bottom: 1vh;
     margin-left: 1vw;
@@ -12,28 +18,27 @@ body {
 }
 
 .M-BTN-TOG-1 {
-    width: 5vw;
+    background-color: var(--eerie-black);
     height: 0.5vh;
-    background-color: black;
     margin-bottom: 0.5vh;
+    transition: 0.4s;
+    width: 5vw;
 }
 
 .M-BTN-TOG-2 {
-    width: 5vw;
+    background-color: var(--eerie-black);
     height: 0.5vh;
-    background-color: black;
     margin-bottom: 0.5vh;
+    transition: 0.4s;
+    width: 5vw;
 }
 
 .M-BTN-TOG-3 {
-    width: 5vw;
+    background-color: var(--eerie-black);
     height: 0.5vh;
-    background-color: black;
     margin-bottom: 0.5vh;
-}
-
-.M:hover {
-    opacity: 0.5;
+    transition: 0.4s;
+    width: 5vw;
 }
 
 /* Not Using Right Now As Far As I Can Tell */

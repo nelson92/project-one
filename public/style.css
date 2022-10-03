@@ -1,5 +1,14 @@
-* {
-    color: black
+/*font-family: 'Abril Fatface', cursive;
+  font-family: 'News Cycle', sans-serif;
+  font-family: 'Noticia Text', serif;
+  font-family: 'Sanchez', serif;*/
+
+/* Color Palette */
+
+:root {
+    --deep-champagne: #F3CEA1;
+    --dutch-white: #F3DFC1;
+    --eerie-black: #1A1C1A;
 }
 
 body {
@@ -7,46 +16,80 @@ body {
 }
 
 header {
-    text-align: center;
+    background-color: var(--deep-champagne);
+    border-bottom: solid 0.25vh var(--eerie-black);
     display: flex;
-    width: 100vw;
     height: 12vh;
-    background-color: white;
-    color: black;
-    border-bottom: solid 0.25vh black;
+    text-align: center;
+    width: 100vw;
 }
+
+/* Website Title Styling */
 
 #H {
+    color: var(--eerie-black);
     display: flex;
-    justify-content: center;
-    width: 67vw;
+    font-family: 'Abril Fatface', cursive;
     font-size: 3vh;
+    justify-content: center;
     line-height: 3vh;
-    margin-top: 1vh;
+    margin-top: 0.5vh;
+    width: 67vw;
 }
 
+/* Category Button Start */
+
 #catBtn {
-    height: 3vh;
-    width: 23vw;
+    align-items: center;
+    box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+    border: 1px solid var(--eerie-black);
+    color: var(--eerie-black);
+    color: var(--eerie-black);
+    display: flex;
+    font-family: 'News Cycle', sans-serif;
+    font-size: 2vh;
+    height: 5vh;
+    justify-content: center;
+    letter-spacing: 0.1vw;
+    line-height: 2vh;
     margin-top: 1vh;
     margin-bottom: 1vh;
-    margin-left: 1vw;
+    margin-left: 75vw;
     margin-right: 1vw;
-    display: inline-block;
-    color: black;
-    font-size: 2vh;
-    line-height: 2vh;
-    border: solid 2px black;
-    background-color: transparent;
-    border-radius: 10px;
-    transition: all 0.3s ease-in-out;
+    padding: 0.25vw 0.5vh;
+    position: absolute;
+    text-decoration: none;
+    text-transform: uppercase;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    width: 23vw;
 }
 
 #catBtn:hover {
-    opacity: 75%;
-    color: #1DA1F2;
-    border: solid 2px black;
+    background-color: var(--dutch-white);
+    cursor: pointer;
 }
+
+#catBtn:focus {
+    background-color: var(--dutch-white);
+    cursor: grab;
+}
+
+#catBtn:active {
+    box-shadow: 0px 0px 0px 0px;
+    cursor: wait;
+    left: 5px;
+    top: 5px;
+}
+
+@media (min-width: 768px) {
+  #catBtn {
+    padding: 0.25vw 0.75vh;
+  }
+}
+
+/* Category Button End */
 
 #S {
     overflow: hidden;
