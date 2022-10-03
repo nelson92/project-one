@@ -91,12 +91,6 @@ header {
     
 }
 
-@media (min-width: 768px) {
-  #catBtn {
-    padding: 0.25vw 0.75vh;
-  }
-}
-
 /* Category Button End */
 
 #S {
@@ -104,11 +98,10 @@ header {
 }
 
 #SB {
-    margin-top: 1vh;
-    margin-bottom: 1vh;
+    margin-top: 20px;
+    margin-bottom: 20px;
     display: flex;
-    height: 12vh;
-    border-bottom: 0.1vh solid black;
+    height: 200px;
 }
 
 #SB-S {
@@ -120,15 +113,14 @@ header {
     border: solid 1px black;
     border-radius: 3px;
     color: black;
-    height: 5vh;
-    width: 40vw;
-    margin-left: 30vw;
-    font-size: 2vh;
-    line-height: 2vh;
+    height: 50px;
+    width: 60vw;
+    font-size: 18px;
     text-align: center;
-    /* margin-left:auto;
-    margin-right:auto; */
-    left:50%
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+
 }
 
 #SB-S-B {
@@ -137,17 +129,14 @@ header {
     border-radius: 3px;
     color: black;
     background-color: white;
-    margin-top: 1vh;
+    margin-top: 10px;
     transition: all 0.3s ease-in-out;
     font-weight: bold;
-    height: 5vh;
+    height: 50px;
     width: 40vw;
-    margin-left: 30vw;
-    font-size: 2vh;
-    line-height: 2vh;
-    /* margin-left:auto;
-    margin-right:auto; */
-    left:50%
+    font-size: 20px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #SB-S-B:hover {
@@ -161,6 +150,7 @@ header {
     display: block;
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: 500px;
 }
 
 .content button {
@@ -168,47 +158,45 @@ header {
 }
 
 #FML {
-    width: 90vw;
-    height: 15vh;
+    width: 100vw;
+    height: 300px;
     display: flex;
-    margin-left: 10vw;
+    justify-content: center;
+
 }
 
 .W {
     display: flex; 
-    height: 20vh;
-    width: 40vw;
-    margin-left: 2vw;
-    font-size: 2vh;
-    line-height: 5vh;
+    height: 200px;
+    width: 44vw;
+    font-size: 18px;
+    line-height: 36px;
 }
 
 .W-C {
-    width: 40vw;
+    width: 44vw;
     background-color: white;
 }
 
 .W-C-T {
-    padding-top: 1vh;
-    padding-bottom: 1vh;
-    padding-left: 1vw;
-    padding-right: 1vw;
+    padding-top: 10px;
+    padding-bottom: 10px;
     display: flex;
     justify-content: center;
 }
 
 .W-C-W {
-    padding-top: 0.5vh;
-    padding-bottom: 0.5vh;
-    padding-left: 0.5vw;
-    padding-right: 0.5vw;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 2vw;
+    padding-right: 2vw;
 }
 
 .W-C-D {
-    padding-top: 0.5vh;
-    padding-bottom: 0.5vh;
-    padding-left: 0.5vw;
-    padding-right: 0.5vw;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 2vw;
+    padding-right: 2vw;
 }
 
 /*.bigBtnBox {
@@ -224,9 +212,9 @@ header {
 }*/
 
 .factsBorder {
-    border-top: 2px solid black;
-    border-left: 2px solid black;
-    height: 40vh;
+    border: 2px solid black;
+    height: 300px;
+    margin-left: 2vw;
 }
 
 #outerDivWrapper2, #outerDiv2 {
