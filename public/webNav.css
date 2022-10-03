@@ -11,32 +11,29 @@
 .M {
     cursor: grab;
     display: inline-block;
-    margin-top: 1vh;
-    margin-bottom: 1vh;
-    margin-left: 1vw;
-    margin-right: 1vw;
+    margin-top: 10px;
 }
 
 .M-BTN-TOG-1 {
     background-color: var(--eerie-black);
-    height: 0.5vh;
-    margin-bottom: 0.5vh;
+    height: 5px;
+    margin-bottom: 5px;
     transition: 0.4s;
     width: 5vw;
 }
 
 .M-BTN-TOG-2 {
     background-color: var(--eerie-black);
-    height: 0.5vh;
-    margin-bottom: 0.5vh;
+    height: 5px;
+    margin-bottom: 5px;
     transition: 0.4s;
     width: 5vw;
 }
 
 .M-BTN-TOG-3 {
     background-color: var(--eerie-black);
-    height: 0.5vh;
-    margin-bottom: 0.5vh;
+    height: 5px;
+    margin-bottom: 5px;
     transition: 0.4s;
     width: 5vw;
 }
