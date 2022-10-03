@@ -17,12 +17,12 @@ body {
 
 header {
     background-color: var(--deep-champagne);
-    border-bottom: solid 0.25vh var(--eerie-black);
+    border-bottom: solid 2px var(--eerie-black);
     display: flex;
-    height: 12vh;
+    height: 150px;
     text-align: center;
     width: 100vw;
-    justify-content:space-evenly;
+    justify-content: space-evenly;
     /* align-items:baseline; */
 }
 
@@ -32,21 +32,19 @@ header {
     color: var(--eerie-black);
     display: flex;
     font-family: 'Abril Fatface', cursive;
-    font-size: 3vh;
+    font-size: 24px;
     justify-content: center;
-    line-height: 3vh;
-    margin-top: 0.5vh;
-    width: 67vw;
-    position:absolute;
-    margin-left:auto;
-    margin-right:auto;
+    margin-top: 5px;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
     /* left:50% */
 
 }
 
 .M {
     position:absolute;
-    left:10px;
+    left: 10px;
 }
 
 /* Category Button Start */
@@ -59,23 +57,20 @@ header {
     color: var(--eerie-black);
     display: flex;
     font-family: 'News Cycle', sans-serif;
-    font-size: 2vh;
-    height: 5vh;
+    font-size: 18px;
+    height: 30px;
     justify-content: center;
-    letter-spacing: 0.1vw;
-    line-height: 2vh;
-    margin-top: 1vh;
-    margin-bottom: 1vh;
-    margin-left: 75vw;
-    margin-right: 1vw;
-    padding: 0.25vw 0.5vh;
+    letter-spacing: 1px;
+    margin-top: 10px;
+    margin-left: calc(90vw - 10px);
+    margin-right: 10px;
     position: absolute;
     text-decoration: none;
     text-transform: uppercase;
     touch-action: manipulation;
     user-select: none;
     -webkit-user-select: none;
-    width: 23vw;
+    width: max-content;
 }
 
 #catBtn:hover {
@@ -177,38 +172,6 @@ header {
     height: 15vh;
     display: flex;
     margin-left: 10vw;
-}
-
-/* Scroll Bar */
-
-#outerDivWrapper, #outerDiv {
-    height: 20vh;
-    width: 44vw;
-}
- 
-#scrollableContent {
-    height: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
-    margin-bottom: 2vh;
-}
-
-.vertical-scroll::-webkit-scrollbar {
-    width: 2vw;
-}
-  
-.vertical-scroll::-webkit-scrollbar-track {
-    border-radius: 100vw;
-}
-  
-.vertical-scroll::-webkit-scrollbar-thumb {
-    background: hsl(0, 0%, 75%);
-    border: 0.5vw solid hsl(0, 0%, 100%);
-    border-radius: 100vw;
-}
-
-.vertical-scroll::-webkit-scrollbar-thumb:hover {
-    background: hsl(0, 0%, 50%);
 }
 
 .W {
