@@ -179,38 +179,6 @@ header {
     margin-left: 10vw;
 }
 
-/* Scroll Bar */
-
-#outerDivWrapper, #outerDiv {
-    height: 20vh;
-    width: 44vw;
-}
- 
-#scrollableContent {
-    height: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
-    margin-bottom: 2vh;
-}
-
-.vertical-scroll::-webkit-scrollbar {
-    width: 2vw;
-}
-  
-.vertical-scroll::-webkit-scrollbar-track {
-    border-radius: 100vw;
-}
-  
-.vertical-scroll::-webkit-scrollbar-thumb {
-    background: hsl(0, 0%, 75%);
-    border: 0.5vw solid hsl(0, 0%, 100%);
-    border-radius: 100vw;
-}
-
-.vertical-scroll::-webkit-scrollbar-thumb:hover {
-    background: hsl(0, 0%, 50%);
-}
-
 .W {
     display: flex; 
     height: 20vh;
