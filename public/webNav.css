@@ -19,7 +19,7 @@
     height: 5px;
     margin-bottom: 5px;
     transition: 0.4s;
-    width: 5vw;
+    width: 40px;
 }
 
 .M-BTN-TOG-2 {
@@ -27,7 +27,7 @@
     height: 5px;
     margin-bottom: 5px;
     transition: 0.4s;
-    width: 5vw;
+    width: 40px;
 }
 
 .M-BTN-TOG-3 {
@@ -35,7 +35,7 @@
     height: 5px;
     margin-bottom: 5px;
     transition: 0.4s;
-    width: 5vw;
+    width: 40px;
 }
 
 .M:hover {
@@ -49,18 +49,19 @@
     left: 0;
     bottom: 0;
     width: 0;
-    height: calc(100vh - 165px);
+    z-index: 2000;
+    height: calc(100vh - 65px);
     background-color: var(--eerie-black);
     transition: all 0.3s ease-in-out;
     overflow: hidden;
 }
 
-
+/*
 .S:hover {
     overflow: hidden;
     overflow-y: scroll; 
     scroll-snap-type: y mandatory;
-}
+}*/
 
 .S-L {
     padding-top: 20px;

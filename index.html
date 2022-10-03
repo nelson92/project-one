@@ -6,43 +6,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Newsletter</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
     <script>
       $(document).ready(function () {});
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=News+Cycle:wght@400;700&family=Noticia+Text:ital,wght@0,400;0,700;1,400;1,700&family=Sanchez:ital@0;1&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=News+Cycle:wght@400;700&family=Noticia+Text:ital,wght@0,400;0,700;1,400;1,700&family=Sanchez:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
     <link href="./public/webNav.css" type="text/css" rel="stylesheet" />
     <link href="./public/style.css" type="text/css" rel="stylesheet" />
     <title>Newsletter</title>
   </head>
 
   <body>
-    
     <header>
-
       <div class="M" onclick="toggleNav()">
         <div class="M-BTN-TOG-1"></div>
         <div class="M-BTN-TOG-2"></div>
         <div class="M-BTN-TOG-3"></div>
       </div>
 
-      <div id="H">
-        <h1 id="H">The QTRO: A Comprehensive Newsletter</h1>
+      <div class="H">
+        <h1 class="H">The QTRO: A Comprehensive Newsletter</h1>
       </div>
 
       <button id="catBtn" onclick="toggleNav()">Categories</button>
-
     </header>
 
-        <div id="SB">
-          <div id="SB-S">
-            <input id="SB-S-I" type="text" placeholder="Browse by Keyword" />
-            <button id="SB-S-B">Search</button>
-            <div id="SB-S-A"></div>
-          </div>
-        </div>
+    <div id="SB">
+      <div id="SB-S">
+        <input id="SB-S-I" type="text" placeholder="Browse by Keyword" />
+        <button id="SB-S-B">Search</button>
+        <div id="SB-S-A"></div>
+      </div>
+    </div>
 
     <aside class="S">
       <ul class="S-L">
@@ -83,56 +90,116 @@
         <li class="S-L-I">
           <a id="C11" class="S-L-I-A">Placeholder</a>
         </li>
+        <li class="S-L-I">
+          <a id="C12" class="S-L-I-A">Placeholder</a>
+        </li>
+        <li class="S-L-I">
+          <a id="C13" class="S-L-I-A">Placeholder</a>
+        </li>
+        <li class="S-L-I">
+          <a id="C14" class="S-L-I-A">Placeholder</a>
+        </li>
+        <li class="S-L-I">
+          <a id="C15" class="S-L-I-A">Placeholder</a>
+        </li>
+        <li class="S-L-I">
+          <a id="C16" class="S-L-I-A">Placeholder</a>
+        </li>
+        <li class="S-L-I">
+          <a id="C17" class="S-L-I-A">Placeholder</a>
+        </li>
+        <li class="S-L-I">
+          <a id="C18" class="S-L-I-A">Placeholder</a>
+        </li>
+        <li class="S-L-I">
+          <a id="C19" class="S-L-I-A">Placeholder</a>
+        </li>
       </ul>
     </aside>
 
     <div class="content">
-
       <div id="FML">
-
-              <div class="factsBorder">
-                <div class="W">
-                  <div class="W-C">
-                    <div class="W-C-T font-bold tracking-wide text-2xl">Fact Generator</div>
-                    <div class="W-C-W" id="W-C-W">Number</div>
-                    <div class="W-C-D" id="W-C-D">Fact</div>
-                  </div>
-                </div>
+        <div class="factsBorder">
+          <div class="W">
+            <div class="W-C">
+              <div class="W-C-T font-bold tracking-wide text-2xl">
+                Fact Generator
               </div>
+              <div class="W-C-W" id="W-C-W">Number</div>
+              <div class="W-C-D" id="W-C-D">Fact</div>
+            </div>
+          </div>
+        </div>
 
-                <div class="factsBorder">
-                  <div class="W">
-                    <div class="W-C">
-                      <div class="W-C-T font-bold tracking-wide text-2xl">Favorite Facts</div>
-                      <div class="W-C-W" id="numberFavorite">Number</div>
-                      <div class="W-C-D" id="factFavorite">Fact</div>
-                    </div>
-                  </div>
-                </div>
-
+        <div class="factsBorder">
+          <div class="W">
+            <div class="W-C">
+              <div class="W-C-T font-bold tracking-wide text-2xl">
+                Favorite Facts
+              </div>
+              <div class="W-C-W" id="numberFavorite">Number</div>
+              <div class="W-C-D" id="factFavorite">Fact</div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="bigBtnBox">
+        <div class="btnBox">
+          <button
+            class="Wbtn font-semibold hover:text-white py-2 px-4 border-black border-4 rounded"
+            id="wordPrev"
+          >
+            Prev
+          </button>
+          <button
+            class="Wbtn font-semibold hover:text-white py-2 px-4 border-solid border-4 rounded"
+            id="wordNext"
+          >
+            Next
+          </button>
+          <button
+            class="Wbtn font-semibold hover:text-white py-2 px-4 border-solid border-4rounded"
+            id="wordSave"
+          >
+            Save Fact
+          </button>
+        </div>
 
-              <div class="btnBox">
-                <button class="Wbtn font-semibold hover:text-white py-2 px-4 border-black border-4 rounded" id="wordPrev">Prev</button>
-                <button class="Wbtn font-semibold hover:text-white py-2 px-4 border-solid border-4 rounded" id="wordNext">Next</button>
-                <button class="Wbtn font-semibold hover:text-white py-2 px-4 border-solid border-4rounded" id="wordSave">Save Fact</button>
-              </div>
-
-              <div class="btnBox">
-                <button class="Wbtn font-semibold hover:text-white py-2 px-4 border-black border-4 rounded" id="favoriteNumberPrev">Prev</button>
-                <button class="Wbtn font-semibold hover:text-white py-2 px-4 border-black border-4 rounded" id="favoriteNumberNext">Next</button>
-                <button class="Wbtn font-semibold hover:text-white py-2 px-4 border-black border-4 rounded" id="wordRemove">Remove Fact</button>
-              </div>
-
+        <div class="btnBox">
+          <button
+            class="Wbtn font-semibold hover:text-white py-2 px-4 border-black border-4 rounded"
+            id="favoriteNumberPrev"
+          >
+            Prev
+          </button>
+          <button
+            class="Wbtn font-semibold hover:text-white py-2 px-4 border-black border-4 rounded"
+            id="favoriteNumberNext"
+          >
+            Next
+          </button>
+          <button
+            class="Wbtn font-semibold hover:text-white py-2 px-4 border-black border-4 rounded"
+            id="wordRemove"
+          >
+            Remove Fact
+          </button>
+        </div>
       </div>
-
     </div>
 
     <div id="P1" class="P">
-      <button class="P-P PB font-semibold py-2 px-4 border-black border-2 rounded">⬅</button>
-      <button class="P-N PB font-semibold py-2 px-4 border-black border-2 rounded">⮕</button>
+      <button
+        class="P-P PB font-semibold py-2 px-4 border-black border-2 rounded"
+      >
+        ⬅
+      </button>
+      <button
+        class="P-N PB font-semibold py-2 px-4 border-black border-2 rounded"
+      >
+        ⮕
+      </button>
     </div>
 
     <div class="content">
@@ -161,26 +228,35 @@
     </div>
 
     <div id="P2" class="P">
-      <button class="P-P PB font-semibold py-2 px-4 border-black border-2 rounded">⬅<button>
-      <button class="P-N PB font-semibold py-2 px-4 border-black border-2 rounded">⮕<button>
+      <button
+        class="P-P PB font-semibold py-2 px-4 border-black border-2 rounded"
+      >
+        ⬅
+      </button>
+      <button
+        class="P-N PB font-semibold py-2 px-4 border-black border-2 rounded"
+      >
+        ⮕
+      </button>
     </div>
 
     <div id="bottomFooter">
-        <a href = "https://github.com/nelson92/project-one" target = "blank" class = "fa fa-github" alt="social media icon for personal github page"></a>
-   
-        <h2 class = "first">Presented by “Team Quatro LLC” </h2>
-        <p class = "second"> 177A Bleecker Street, New York City, NY 10012-1406</p>
+      <a
+        href="https://github.com/nelson92/project-one"
+        target="blank"
+        class="fa fa-github"
+        alt="social media icon for personal github page"
+      ></a>
+
+      <h2 class="first">Presented by “Team Quatro LLC”</h2>
+      <p class="second">177A Bleecker Street, New York City, NY 10012-1406</p>
     </div>
-    
   </body>
 
   <footer>
-    
-    <p id="scoreDisplay" class="text-white"> </p>
-
+    <p id="scoreDisplay" class="text-white"></p>
   </footer>
 
   <script src="./public/script.js"></script>
   <script src="./public/webNav.js"></script>
-
 </html>
