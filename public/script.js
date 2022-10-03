@@ -29,19 +29,11 @@ const C3 = document.querySelector('#C3');
 const C4 = document.querySelector('#C4');
 const C5 = document.querySelector('#C5');
 const C6 = document.querySelector('#C6');
-const C7 = document.querySelector('#C7');
+const C7 = document.queryStelector('#C7');
 const C8 = document.querySelector('#C8');
 const C9 = document.querySelector('#C9');
 const C10 = document.querySelector('#C10');
 const C11 = document.querySelector('#C11');
-const C12 = document.querySelector('#C12');
-const C13 = document.querySelector('#C13');
-const C14 = document.querySelector('#C14');
-const C15 = document.querySelector('#C15');
-const C16 = document.querySelector('#C16');
-const C17 = document.querySelector('#C17');
-const C18 = document.querySelector('#C18');
-const C19 = document.querySelector('#C19');
 const H1 = document.querySelector('#H1');
 
 
@@ -222,22 +214,6 @@ function setCat(cat) {
     C10.value = `${cat[9]}`;
     C11.innerText = `${cat[10]}`;
     C11.value = `${cat[10]}`;
-    C12.innerText = `${cat[11]}`;
-    C12.value = `${cat[11]}`;
-    C13.innerText = `${cat[4]}`;
-    C13.value = `${cat[4]}`;
-    C14.innerText = `${cat[13]}`;
-    C14.value = `${cat[13]}`;
-    C15.innerText = `${cat[14]}`;
-    C15.value = `${cat[14]}`;
-    C16.innerText = `${cat[15]}`;
-    C16.value = `${cat[15]}`;
-    C17.innerText = `${cat[16]}`;
-    C17.value = `${cat[16]}`;
-    C18.innerText = `${cat[17]}`;
-    C18.value = `${cat[17]}`;
-    C19.innerText = `${cat[18]}`;
-    C19.value = `${cat[18]}`;
 }
 
 /* variables regarding news feed display and function */
@@ -911,86 +887,6 @@ C11.addEventListener("click", async function() {
     }
     if (check.length == 2) {
         location.href = check[0] + `?catagories=${C11.value}`;
-    }
-})
-
-C12.addEventListener("click", async function() {
-    let check = location.href.split("?");
-    if (check.length == 1) {
-        location.href = check[0] + `?catagories=${C12.value}`;
-    }
-    if (check.length == 2) {
-        location.href = check[0] + `?catagories=${C12.value}`;
-    }
-})
-
-C13.addEventListener("click", async function() {
-    let check = location.href.split("?");
-    if (check.length == 1) {
-        location.href = check[0] + `?catagories=${C13.value}`;
-    }
-    if (check.length == 2) {
-        location.href = check[0] + `?catagories=${C13.value}`;
-    }
-})
-
-C14.addEventListener("click", async function() {
-    let check = location.href.split("?");
-    if (check.length == 1) {
-        location.href = check[0] + `?catagories=${C14.value}`;
-    }
-    if (check.length == 2) {
-        location.href = check[0] + `?catagories=${C14.value}`;
-    }
-})
-
-C15.addEventListener("click", async function() {
-    let check = location.href.split("?");
-    if (check.length == 1) {
-        location.href = check[0] + `?catagories=${C15.value}`;
-    }
-    if (check.length == 2) {
-        location.href = check[0] + `?catagories=${C15.value}`;
-    }
-})
-
-C16.addEventListener("click", async function() {
-    let check = location.href.split("?");
-    if (check.length == 1) {
-        location.href = check[0] + `?catagories=${C16.value}`;
-    }
-    if (check.length == 2) {
-        location.href = check[0] + `?catagories=${C16.value}`;
-    }
-})
-
-C17.addEventListener("click", async function() {
-    let check = location.href.split("?");
-    if (check.length == 1) {
-        location.href = check[0] + `?catagories=${C17.value}`;
-    }
-    if (check.length == 2) {
-        location.href = check[0] + `?catagories=${C17.value}`;
-    }
-})
-
-C18.addEventListener("click", async function() {
-    let check = location.href.split("?");
-    if (check.length == 1) {
-        location.href = check[0] + `?catagories=${C18.value}`;
-    }
-    if (check.length == 2) {
-        location.href = check[0] + `?catagories=${C18.value}`;
-    }
-})
-
-C19.addEventListener("click", async function() {
-    let check = location.href.split("?");
-    if (check.length == 1) {
-        location.href = check[0] + `?catagories=${C19.value}`;
-    }
-    if (check.length == 2) {
-        location.href = check[0] + `?catagories=${C19.value}`;
     }
 })
 
