@@ -465,55 +465,64 @@ header {
 }
 
 #bottomFooter {
-    background-color: darkgoldenrod;
-    background-color: #1DA1F2;
+    background-color: var(--eerie-black);
+    color: var(--deep-champagne);
     position: relative;
     height: 135px;
-    /* bottom:-100px; */
     width: 100vw;
     text-align: center;
     font-size: 40px;
 }
 
+/* Footer Text*/
+
 #bottomFooter h2 {
-font-size: 18px;
+    font-family: 'News Cycle', sans-serif;
+    font-size: 18px;
 }
 
 #bottomFooter p {
-font-size: 14px;
+    font-size: 14px;
+    font-family: 'Noticia Text', serif;
 }
 
 footer {
-background-color:#1DA1F2;
-height: 50px;
-/* margin-top:60px; */
-font-size: 18px;
-position: sticky;
-bottom: 0px;
-width: 100vw;
-overflow: hidden;
-text-align: center;
+    background-color: var(--eerie-black);
+    height: 50px;
+    font-size: 18px;
+    position: sticky;
+    bottom: 0px;
+    width: 100vw;
+    overflow: hidden;
+    text-align: center;
 }
 
 footer p {
-    font-size: 2vh;
-    color: white;
+    font-size: 24px;
+    color: var(--deep-champagne);
     left: 2000px;
     overflow-wrap: break-word;
     white-space: pre;
     overflow: hidden;
     width: max-content;
     position: relative;
+    font-family: 'News Cycle', sans-serif;
 }
+
+#scoreDisplay {
+    color: var(--deep-champagne);
+}
+
+/* GitHub Icon */
 
 .fa {
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 10px;
     padding-right: 10px;
-    font-size: 20px;
+    font-size: 40px;
     width: 2vw;
-    height: 20px;
+    height: 40px;
     text-align: center;
     text-decoration: none;
     border-radius: 50%;
@@ -521,8 +530,15 @@ footer p {
 
 .fa:hover {
     opacity: 0.9;
-    transform: scale(1.1);
+    transform: scale(1.25);
+    cursor: pointer;
 }
+
+.fa:active {
+    opacity: 0.9;
+    cursor: wait;
+}
+
 
 @media screen and (max-width: 1200px) {
 
