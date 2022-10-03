@@ -1,7 +1,6 @@
-/*font-family: 'Abril Fatface', cursive;
-  font-family: 'News Cycle', sans-serif;
-  font-family: 'Noticia Text', serif;
-  font-family: 'Sanchez', serif;*/
+* {
+    font-family: 'Noticia Text', serif;
+}
 
 /* Color Palette */
 
@@ -13,6 +12,7 @@
 
 body {
     display: grid;
+    background-color: var(--dutch-white);
 }
 
 header {
@@ -21,14 +21,13 @@ header {
     display: flex;
     height: 150px;
     text-align: center;
-    width: 100vw;
+    width: 100%;
     justify-content: space-evenly;
-    /* align-items:baseline; */
 }
 
 /* Website Title Styling */
 
-#H {
+.H {
     color: var(--eerie-black);
     display: flex;
     font-family: 'Abril Fatface', cursive;
@@ -38,12 +37,10 @@ header {
     position: absolute;
     margin-left: auto;
     margin-right: auto;
-    /* left:50% */
-
 }
 
 .M {
-    position:absolute;
+    position: absolute;
     left: 10px;
 }
 
@@ -62,8 +59,8 @@ header {
     justify-content: center;
     letter-spacing: 1px;
     margin-top: 10px;
-    margin-left: calc(90vw - 10px);
-    margin-right: 10px;
+    margin-left: calc(90vw + 10px);
+    margin-right: 2vw;
     position: absolute;
     text-decoration: none;
     text-transform: uppercase;
@@ -108,11 +105,14 @@ header {
     width: 100vw;
 }
 
+/* Search Input */
+
 #SB-S-I {
     display: block;
-    border: solid 1px black;
-    border-radius: 3px;
-    color: black;
+    background-color: var(--eerie-black);
+    border: solid 1px var(--eerie-black);
+    border-radius: 10px;
+    color: var(--deep-champagne);
     height: 50px;
     width: 60vw;
     font-size: 18px;
@@ -120,50 +120,147 @@ header {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 20px;
-
+    font-family: 'News Cycle', sans-serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
+#SB-S-I:hover {
+    background-color: var(--deep-champagne);
+    border: solid 1px var(--eerie-black);
+    color: var(--eerie-black);
+}
+
+#SB-S-I:focus {
+    background-color: var(--deep-champagne);
+    border: solid 1px var(--eerie-black);
+    color: var(--eerie-black);
+}
+
+#SB-S-I:active {
+    background-color: var(--deep-champagne);
+    border: solid 1px var(--eerie-black);
+    color: var(--eerie-black);
+}
+
+#SB-S-I::placeholder {
+    color: var(--deep-champagne);
+}
+
+/* Search Button */
+
 #SB-S-B {
-    display: block;
-    border: solid 1px black;
-    border-radius: 3px;
-    color: black;
-    background-color: white;
-    margin-top: 10px;
-    transition: all 0.3s ease-in-out;
-    font-weight: bold;
-    height: 50px;
-    width: 40vw;
-    font-size: 20px;
-    margin-left: auto;
-    margin-right: auto;
+  appearance: button;
+  background-color: var(--eerie-black);
+  background-image: none;
+  border: 1px solid var(--eerie-black);
+  border-radius: 4px;
+  box-shadow: #E2E3E2 4px 4px 0 0,#1A1C1A 4px 4px 0 1px;
+  box-sizing: border-box;
+  color: var(--deep-champagne);
+  cursor: pointer;
+  display: block;
+  font-family: 'Sanchez', serif;
+  font-size: 14px;
+  line-height: 20px;
+  overflow: hidden;
+  text-align: center;
+  text-transform: none;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  white-space: nowrap;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 12px 50px;
+}
+
+#SB-S-B:focus {
+  cursor: grab;
+  text-decoration: none;
+  background-color: var(--deep-champagne);
+  border: 1px solid var(--eerie-black);
+  color: var(--eerie-black);
+  box-shadow: #1A1C1A 4px 4px 0 0,#1A1C1A 4px 4px 0 1px;
 }
 
 #SB-S-B:hover {
-    opacity: 75%; 
-    color: #1DA1F2;
-    border: solid 1px black;
-    overflow: hidden;
+  text-decoration: none;
+  background-color: var(--deep-champagne);
+  border: 1px solid var(--eerie-black);
+  color: var(--eerie-black);
+  box-shadow: #1A1C1A 4px 4px 0 0,#1A1C1A 4px 4px 0 1px;
+}
+
+#SB-S-B:active {
+  box-shadow: var(--eerie-black) 0 3px 5px inset;
+  outline: 0;
+  cursor: wait
 }
 
 .content {
     display: block;
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: 500px;
+    width: 100%;
 }
 
+/* PREV, NEXT, SAVE FACT & REMOVE FACT STYLING */
+
 .content button {
-    color: black;
+    background-color: var(--deep-champagne);
+    border: 2px solid var(--eerie-black);
+    color: var(--eerie-black);
+    cursor: pointer;
+    font-family: 'News Cycle', sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.content button:hover {
+    background-color: var(--eerie-black);
+    border: none;
+    color: var(--dutch-white);
+    font-family: 'News Cycle', sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: grab;
+}
+
+.content button:focus {
+    background-color: var(--eerie-black);
+    border: none;
+    color: var(--dutch-white);
+    font-family: 'News Cycle', sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: grab;
+}
+
+.content button:active {
+    background-color: var(--eerie-black);
+    border: none;
+    color: var(--dutch-white);
+    font-family: 'News Cycle', sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: wait;
 }
 
 #FML {
-    width: 100vw;
+    width: 100%;
     height: 300px;
     display: flex;
-    justify-content: center;
+    margin-left: 2.8%;
+    /*justify-content: center;*/
 
 }
+
+/* Fact Generator & Favorite Facts Boxes*/
 
 .W {
     display: flex; 
@@ -175,7 +272,7 @@ header {
 
 .W-C {
     width: 44vw;
-    background-color: white;
+    background-color: var(--deep-champagne);
 }
 
 .W-C-T {
@@ -190,6 +287,7 @@ header {
     padding-bottom: 10px;
     padding-left: 2vw;
     padding-right: 2vw;
+    font-family: 'Sanchez', serif;
 }
 
 .W-C-D {
@@ -197,32 +295,22 @@ header {
     padding-bottom: 10px;
     padding-left: 2vw;
     padding-right: 2vw;
+    font-family: 'Sanchez', serif;
 }
-
-/*.bigBtnBox {
-    width: 100%;
-    margin-left: 60px;
-    height: 100px;
-    margin-top: -10px;
-    border-top: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-}*/
 
 .factsBorder {
     border: 2px solid black;
     height: 300px;
     margin-left: 2vw;
+    background-color: var(--deep-champagne);
 }
 
 .bigBtnBox {
-    width: 100vw;
-    height: 10px;
+    width: 100%;
+    height: 100px;
     border-top: none;
     display: flex;
-    margin-left: 3vw;
+    margin-left: 2.55%;
 }
 
 .btnBox {
@@ -235,24 +323,35 @@ header {
     border-radius: 20px;
     border-top: none;
 }
+.btnBox button:hover{
+    background-color: var(--eerie-black);
+    color: var(--deep-champagne);
+}  
+
+.btnBox button:focus {
+    background-color: var(--eerie-black);
+    color: var(--deep-champagne);
+}  
+
+.btnBox button:active {
+    background-color: var(--eerie-black);
+    color: var(--deep-champagne);
+}   
 
 .Wbtn {
-    /* border: solid 1px black; */
     width: 11vw;
     height: 50px;
     transition: all 0.3s ease-in-out;
-    /* border-radius: 5px; */
     background-color: white;
     font-size: 14px;
     margin-top: 20px;
     margin-left: 1vw;
 }
-
+/*
 .Wbtn:hover {
     opacity: 75%;
     color: #1DA1F2;
-    /* border: solid 2px black; */
-}
+}*/
 
 #wordSave {
     width: 22vw;
@@ -262,48 +361,81 @@ header {
     width: 22vw;
 }
 
+/* Forward And Back Buttons*/
+
 .P {
     border: solid 0px transparent;
     border-radius: 5px;
     display: flex;
     justify-content: flex-end;
-    margin-left: calc(15vh);
-    margin-right: calc(8vh);
+    width: 100%;
 }
 
 #P1 {
+    padding-left: 10%;
+    padding-right: 10%;
     margin-top: 100px;
     margin-bottom: 20px;
     margin-right: 8vw;
 }
 
 #P2 {
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-top: 100px;
     margin-bottom: 100px;
-}
-
-.PB {
-    /* border: none; */
-    /* border-radius: 3px; */
-    background-color: white;
-    color: black;
-    width: 10vw;
-    height: 50px;
-    /* border: solid 1px black; */
-    transition: all 0.3s ease-in-out;
-    /* border-radius: 5px; */
-    
-}
-
-.PB:hover {
-    opacity: 75%; 
-    color: #1DA1F2;
-    border: solid 2px black;
+    margin-right: 8vw;
 }
 
 .P-P {
     display: none;
 }
 
+.PB {
+    background-color: var(--deep-champagne);
+    color: var(--eerie-black);
+    width: 10vw;
+    cursor: pointer;
+    font-family: 'News Cycle', sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.PB:hover {
+    background-color: var(--eerie-black);
+    color: var(--deep-champagne);
+    width: 10vw;
+    font-family: 'News Cycle', sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: grab;
+}
+
+.PB:focus {
+    background-color: var(--eerie-black);
+    color: var(--deep-champagne);
+    width: 10vw;
+    font-family: 'News Cycle', sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: grab;
+}
+
+.PB:active {
+    background-color: var(--eerie-black);
+    color: var(--deep-champagne);
+    width: 10vw;
+    font-family: 'News Cycle', sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: wait;
+}
+
+/* News API Article Styling */
 
 #N {
     display: flex;
@@ -314,8 +446,7 @@ header {
 }
 
 #N-C {
-    width: 100%;
-    margin-left: 3vw;
+    width: 100vw;
     display: inline-flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -323,12 +454,10 @@ header {
 
 .N-C-N {
     display: flex;
-    height: 50vh;
+    height: 500px;
     width: 44vw;
     margin-left: 1vw;
     margin-right: 1vw;
-    /* border: solid 2px black; */
-    /* border-radius: 4%; */
     justify-content: flex-end;
     align-items: flex-end;
 }
@@ -340,8 +469,9 @@ header {
 }
 
 .title{ 
-    background-color: whitesmoke;
-    font-size: 2vh;
+    background-color: var(--deep-champagne);
+    color: var(--eerie-black);
+    font-size: 16px;
 }
 
 #B1, #B2, #B3, #B4, #B5, #B6 {
@@ -351,55 +481,64 @@ header {
 }
 
 #bottomFooter {
-    background-color: darkgoldenrod;
-    background-color: #1DA1F2;
+    background-color: var(--eerie-black);
+    color: var(--deep-champagne);
     position: relative;
     height: 135px;
-    /* bottom:-100px; */
     width: 100vw;
     text-align: center;
     font-size: 40px;
 }
 
+/* Footer Text*/
+
 #bottomFooter h2 {
-font-size: 1.75vh;
+    font-family: 'News Cycle', sans-serif;
+    font-size: 18px;
 }
 
 #bottomFooter p {
-font-size: 1.5vh;
+    font-size: 14px;
+    font-family: 'Noticia Text', serif;
 }
 
 footer {
-background-color:#1DA1F2;
-height: 3vh;
-/* margin-top:60px; */
-font-size: 3vh;
-position: sticky;
-bottom: 0px;
-width: 100vw;
-overflow: hidden;
-text-align: center;
+    background-color: var(--eerie-black);
+    height: 50px;
+    font-size: 18px;
+    position: sticky;
+    bottom: 0px;
+    width: 100vw;
+    overflow: hidden;
+    text-align: center;
 }
 
 footer p {
-    font-size: 2vh;
-    color: white;
+    font-size: 24px;
+    color: var(--deep-champagne);
     left: 2000px;
     overflow-wrap: break-word;
     white-space: pre;
     overflow: hidden;
     width: max-content;
     position: relative;
+    font-family: 'News Cycle', sans-serif;
 }
 
+#scoreDisplay {
+    color: var(--deep-champagne);
+}
+
+/* GitHub Icon */
+
 .fa {
-    padding-top: 2vh;
-    padding-bottom: 2vh;
-    padding-left: 2vw;
-    padding-right: 2vw;
-    font-size: 4vh;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 40px;
     width: 2vw;
-    height: 2vw;
+    height: 40px;
     text-align: center;
     text-decoration: none;
     border-radius: 50%;
@@ -407,8 +546,15 @@ footer p {
 
 .fa:hover {
     opacity: 0.9;
-    transform: scale(1.1);
+    transform: scale(1.25);
+    cursor: pointer;
 }
+
+.fa:active {
+    opacity: 0.9;
+    cursor: wait;
+}
+
 
 @media screen and (max-width: 1200px) {
 
@@ -423,7 +569,7 @@ footer p {
 
     #N-C {
         width: 100%;
-        margin-left: 57.5px;
+        /*margin-left: 57.5px;*/
     }
 
     #N {
@@ -434,14 +580,28 @@ footer p {
 
 @media screen and (max-width: 1200px) {
 
+    #catBtn {
+        margin-left: calc(91vw - 50px);
+        margin-right: 5vw;
+    }
+    #FML {
+        width: 100%;
+    }
+
+    .bigBtnBox {
+        width: 100%;
+    }
+
     .N-C-N {
         height: 500px;
         width: 100%;
     }
 
+
+
     #N-C {
         width: 100%;
-        margin-left: 57.5px;
+        /*margin-left: 57.5px;*/
     }
 
     #N {
@@ -451,6 +611,7 @@ footer p {
 }
 
 @media screen and (max-width: 825px) {
+
 
     .N-C-N {
         height: 300px;
@@ -468,8 +629,22 @@ footer p {
 }
 
 @media screen and (max-width: 700px) {
+    #catBtn {
+        margin-left: calc(87vw - 30px);
+        margin-right: 5vw;
+    }
 
-    #H h2 {
+    .W {
+        height: 300px;
+    }
+    .factsBorder {
+        height: 400px;
+    }
+    .bigBtnBox {
+        margin-top: 100px;
+    }
+
+    .H h2 {
         font-size: 15px;
     }
 
@@ -490,15 +665,49 @@ footer p {
         height: 1900px;
     }
 
+    .btnBox button{
+        font-size: 10px;
+    }
+    .btnBox button{
+        font-size: 10px;
+    }
+    .btnBox button:hover{
+        font-size: 10px;
+    }
+    .btnBox button:focus{
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .W {
+        height: 300px;
+    }
+    .factsBorder {
+        height: 400px;
+    }
+    .bigBtnBox {
+        margin-top: 100px;
+    }
+
+    .btnBox button{
+        font-size: 9px;
+    }
+
+
 }
 
 @media screen and (max-width: 550px) {
+    #catBtn {
+        margin-left: calc(85vw - 70px);
+        margin-right: 0;
+    }
 
-    #H h2 {
+    .H h2 {
         font-size: 10px;
     }
 
-    #H h2 button{
+    .H h2 button{
         margin-left: 0px;
     }
 
@@ -515,4 +724,41 @@ footer p {
         height: 1500px;
     }
     
+    .btnBox button{
+        font-size: 8.25px;
+    }
+    .btnBox button:hover{
+        font-size: 8.25px;
+    }
+    .btnBox button:focus{
+        font-size: 8.25px;
+    }
+}
+
+
+@media screen and (max-width: 499px) {
+    .bigBtnBox {
+        margin-top: 100px;
+    }
+
+    .W {
+        font-size: 16px;
+        height: 400px
+    }
+    .factsBorder {
+        height: 500px;
+    }
+    .bigBtnBox {
+        margin-top: 200px;
+    }
+    .btnBox button{
+        padding: 0;
+        font-size: 7px;
+    }
+    .btnBox button:hover{
+        font-size: 7px;
+    }
+    .btnBox button:focus{
+        font-size: 7px;
+    }
 }
