@@ -68,6 +68,7 @@
 }
 */
 
+/* Toggled Category Section */
 
 .S {
     position: fixed;
@@ -75,7 +76,7 @@
     bottom: 0;
     width: 0; /*calc(100vw - 94vw)*/;
     height: calc(100vh - 165px);
-    background-color: #1DA1F2;
+    background-color: var(--eerie-black);
     transition: all 0.3s ease-in-out;
     overflow: hidden;
 }
@@ -103,7 +104,7 @@
     padding-left: 20px;
     text-decoration: none;
     text-transform: uppercase;
-    color: #FFF;
+    color: #E2E3E2;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
     white-space: nowrap;
@@ -113,5 +114,5 @@
 
 .S-L-I-A:hover {
     cursor: pointer;
-    color: black;
+    color: var(--deep-champagne);
 }
