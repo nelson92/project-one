@@ -106,11 +106,14 @@ header {
     width: 100vw;
 }
 
+/* Search Input */
+
 #SB-S-I {
     display: block;
-    border: solid 1px black;
-    border-radius: 3px;
-    color: black;
+    background-color: var(--eerie-black);
+    border: solid 1px var(--eerie-black);
+    border-radius: 10px;
+    color: var(--deep-champagne);
     height: 50px;
     width: 60vw;
     font-size: 18px;
@@ -118,7 +121,31 @@ header {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 20px;
+    font-family: 'News Cycle', sans-serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
 
+#SB-S-I:hover {
+    background-color: var(--deep-champagne);
+    border: solid 1px var(--eerie-black);
+    color: var(--eerie-black);
+}
+
+#SB-S-I:focus {
+    background-color: var(--deep-champagne);
+    border: solid 1px var(--eerie-black);
+    color: var(--eerie-black);
+}
+
+#SB-S-I:active {
+    background-color: var(--deep-champagne);
+    border: solid 1px var(--eerie-black);
+    color: var(--eerie-black);
+}
+
+#SB-S-I::placeholder {
+    color: var(--deep-champagne);
 }
 
 /* Search Button */
