@@ -150,6 +150,7 @@ header {
     display: block;
     display: flex;
     flex-wrap: wrap;
+    width: 100%;
 }
 
 .content button {
@@ -266,8 +267,8 @@ header {
     border-radius: 5px;
     display: flex;
     justify-content: flex-end;
-    margin-left: calc(15vh);
-    margin-right: calc(8vh);
+    margin-left: calc(15vw);
+    margin-right: calc(6.5vw);
 }
 
 #P1 {
@@ -314,7 +315,6 @@ header {
 
 #N-C {
     width: 100%;
-    margin-left: 3vw;
     display: inline-flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -322,7 +322,7 @@ header {
 
 .N-C-N {
     display: flex;
-    height: 50vh;
+    height: 500px;
     width: 44vw;
     margin-left: 1vw;
     margin-right: 1vw;
@@ -340,7 +340,7 @@ header {
 
 .title{ 
     background-color: whitesmoke;
-    font-size: 2vh;
+    font-size: 16px;
 }
 
 #B1, #B2, #B3, #B4, #B5, #B6 {
@@ -361,18 +361,18 @@ header {
 }
 
 #bottomFooter h2 {
-font-size: 1.75vh;
+font-size: 18px;
 }
 
 #bottomFooter p {
-font-size: 1.5vh;
+font-size: 14px;
 }
 
 footer {
 background-color:#1DA1F2;
-height: 3vh;
+height: 50px;
 /* margin-top:60px; */
-font-size: 3vh;
+font-size: 18px;
 position: sticky;
 bottom: 0px;
 width: 100vw;
@@ -392,13 +392,13 @@ footer p {
 }
 
 .fa {
-    padding-top: 2vh;
-    padding-bottom: 2vh;
-    padding-left: 2vw;
-    padding-right: 2vw;
-    font-size: 4vh;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 20px;
     width: 2vw;
-    height: 2vw;
+    height: 20px;
     text-align: center;
     text-decoration: none;
     border-radius: 50%;
