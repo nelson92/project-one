@@ -1,7 +1,8 @@
-/*font-family: 'Abril Fatface', cursive;
-  font-family: 'News Cycle', sans-serif;
-  font-family: 'Noticia Text', serif;
-  font-family: 'Sanchez', serif;*/
+* { /*font-family: 'Abril Fatface', cursive;*/
+    /*font-family: 'News Cycle', sans-serif;*/
+    font-family: 'Noticia Text', serif;
+    /*font-family: 'Sanchez', serif;*/
+}
 
 /* Color Palette */
 
@@ -41,7 +42,7 @@ header {
 }
 
 .M {
-    position:absolute;
+    position: absolute;
     left: 10px;
 }
 
@@ -177,6 +178,7 @@ header {
 }
 
 #SB-S-B:focus {
+  cursor: grab;
   text-decoration: none;
   background-color: var(--deep-champagne);
   border: 1px solid var(--eerie-black);
@@ -195,6 +197,7 @@ header {
 #SB-S-B:active {
   box-shadow: var(--eerie-black) 0 3px 5px inset;
   outline: 0;
+  cursor: wait
 }
 
 .content {
@@ -204,10 +207,6 @@ header {
     width: 100%;
 }
 
-.content button {
-    color: black;
-}
-
 #FML {
     width: 100vw;
     height: 300px;
@@ -215,6 +214,8 @@ header {
     justify-content: center;
 
 }
+
+/* Fact Generator & Favorite Facts Boxes*/
 
 .W {
     display: flex; 
@@ -226,7 +227,7 @@ header {
 
 .W-C {
     width: 44vw;
-    background-color: white;
+    background-color: var(--deep-champagne);
 }
 
 .W-C-T {
@@ -241,6 +242,7 @@ header {
     padding-bottom: 10px;
     padding-left: 2vw;
     padding-right: 2vw;
+    font-family: 'Sanchez', serif;
 }
 
 .W-C-D {
@@ -248,24 +250,14 @@ header {
     padding-bottom: 10px;
     padding-left: 2vw;
     padding-right: 2vw;
+    font-family: 'Sanchez', serif;
 }
-
-/*.bigBtnBox {
-    width: 100%;
-    margin-left: 60px;
-    height: 100px;
-    margin-top: -10px;
-    border-top: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-}*/
 
 .factsBorder {
     border: 2px solid black;
     height: 300px;
     margin-left: 2vw;
+    background-color: var(--deep-champagne);
 }
 
 .bigBtnBox {
