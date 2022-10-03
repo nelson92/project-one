@@ -207,6 +207,52 @@ header {
     width: 100%;
 }
 
+/* PREV, NEXT, SAVE FACT & REMOVE FACT STYLING */
+
+.content button {
+    background-color: var(--deep-champagne);
+    border: 2px solid var(--eerie-black);
+    color: var(--eerie-black);
+    cursor: pointer;
+    font-family: 'News Cycle', sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.content button:hover {
+    background-color: var(--eerie-black);
+    border: none;
+    color: var(--dutch-white);
+    font-family: 'News Cycle', sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: grab;
+}
+
+.content button:focus {
+    background-color: var(--eerie-black);
+    border: none;
+    color: var(--dutch-white);
+    font-family: 'News Cycle', sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: grab;
+}
+
+.content button:active {
+    background-color: var(--eerie-black);
+    border: none;
+    color: var(--dutch-white);
+    font-family: 'News Cycle', sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: wait;
+}
+
 #FML {
     width: 100vw;
     height: 300px;
@@ -280,11 +326,9 @@ header {
 }
 
 .Wbtn {
-    /* border: solid 1px black; */
     width: 11vw;
     height: 50px;
     transition: all 0.3s ease-in-out;
-    /* border-radius: 5px; */
     background-color: white;
     font-size: 14px;
     margin-top: 20px;
@@ -294,7 +338,6 @@ header {
 .Wbtn:hover {
     opacity: 75%;
     color: #1DA1F2;
-    /* border: solid 2px black; */
 }
 
 #wordSave {
@@ -304,6 +347,8 @@ header {
 #wordRemove {
     width: 22vw;
 }
+
+/* Forward And Back Buttons*/
 
 .P {
     border: solid 0px transparent;
@@ -324,29 +369,55 @@ header {
     margin-bottom: 100px;
 }
 
-.PB {
-    /* border: none; */
-    /* border-radius: 3px; */
-    background-color: white;
-    color: black;
-    width: 10vw;
-    height: 50px;
-    /* border: solid 1px black; */
-    transition: all 0.3s ease-in-out;
-    /* border-radius: 5px; */
-    
-}
-
-.PB:hover {
-    opacity: 75%; 
-    color: #1DA1F2;
-    border: solid 2px black;
-}
-
 .P-P {
     display: none;
 }
 
+.PB {
+    background-color: var(--deep-champagne);
+    color: var(--eerie-black);
+    width: 10vw;
+    cursor: pointer;
+    font-family: 'News Cycle', sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.PB:hover {
+    background-color: var(--eerie-black);
+    color: var(--deep-champagne);
+    width: 10vw;
+    font-family: 'News Cycle', sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: grab;
+}
+
+.PB:focus {
+    background-color: var(--eerie-black);
+    color: var(--deep-champagne);
+    width: 10vw;
+    font-family: 'News Cycle', sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: grab;
+}
+
+.PB:active {
+    background-color: var(--eerie-black);
+    color: var(--deep-champagne);
+    width: 10vw;
+    font-family: 'News Cycle', sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: wait;
+}
+
+/* News API Article Styling */
 
 #N {
     display: flex;
@@ -382,7 +453,8 @@ header {
 }
 
 .title{ 
-    background-color: whitesmoke;
+    background-color: var(--deep-champagne);
+    color: var(--eerie-black);
     font-size: 16px;
 }
 
