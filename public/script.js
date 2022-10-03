@@ -493,7 +493,7 @@ $('#scoreDisplay').removeAttr("style")
 
 $('#scoreDisplay').animate({
     left:-4500
-    }, 30000, "linear" ,
+    }, 40000, "linear" ,
         scoreMovement
     
 )
