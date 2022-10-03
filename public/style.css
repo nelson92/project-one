@@ -737,6 +737,9 @@ footer p {
 
 
 @media screen and (max-width: 499px) {
+    .PB {
+        padding: 0;
+    }
     .bigBtnBox {
         margin-top: 100px;
     }
