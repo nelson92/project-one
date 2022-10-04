@@ -1,4 +1,4 @@
-# The QTRO: A Comprehensive Newsletter
+# The QTRO: A Comprehensive News Aggregator
 
 ## Description
 
@@ -17,21 +17,31 @@ N/A
 
 ## Usage
 
+![News Aggregator Screenshot](assets/images/news-aggregator-screenshot.png)
+
 Provide instructions and examples for use. Include screenshots as needed.
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative file path, add it to your README using the following syntax:
-
-![alt text](assets/images/screenshot.png)
-
-Link to deployed application (add here)!
+https://nelson92.github.io/project-one/
 
 ## Credits
 
-List your collaborators, if any, with links to their GitHub profiles.
+Collaborators:
 
-If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
+https://github.com/jesterb0206
 
-If you followed tutorials, include links to those here as well.
+https://github.com/Joeychez23
+
+https://github.com/nelson92
+
+https://github.com/samlee088
+
+Sources:
+
+- https://blog.flipsnack.com/newspaper-fonts/ - flipsnack [We used the Abril Fatface and Sanchez font families throughout our web application]
+
+- https://getcssscan.com/css-buttons-examples - CSS Scan [The Categories and Search buttons were inspired by buttons 50 and 54]
+
+- https://www.schemecolor.com/vintage-newspaper.php - SchemeColor.com [The color palette inspiration for our web application came from this article]
 
 ## License
 
