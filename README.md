@@ -6,7 +6,7 @@ We created a website that collects current news articles from multiple sources, 
 
 This project was created using HTML, CSS, Javascript, API data, Jquery, and Tailwind. The project demonstrates the ability to use multiple different APIs together to create a website, with multiple user interactive elements. Additionally, the project display responsiveness, with different uses of traditional CSS and also Tailwind CSS. 
 
-The project was designed to display a 'cleaner' user interface while browsing newspaper articles, display articles from multiple sources to help the user from browsing multiple sources for a catagory or search term, and to view NFL live scores while nagivating news articles. 
+The project was designed to display a 'cleaner' user interface while browsing newspaper articles, display articles from multiple sources to help the user from browsing multiple sources for a category or search term, and to view NFL live scores while navigating news articles. 
 
 
 ## Installation
