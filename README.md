@@ -1,27 +1,26 @@
-# The QTRO: A Comprehensive News Aggregator
+The QTRO: A Comprehensive News Aggregator
 
-## Description
 
-USER STORY AS WELL 
+We created a website that collects current news articles from multiple sources, as well as provides real-time NFL scores and displays interesting number facts, displaying them all in one place in an easy-to-use format. The QTRO will also save all of your favorite number facts in a simple, intuitive format.
 
-Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
+- Our motiviation - to create an application with an interface to collect news articles from various sources, stay up to date on NFL scores and learn a new interesting fact about numbers
 
-- What was your motivation?
-- Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
-- What problem does it solve?
-- What did you learn?
+- Why did you build this project? - To provide users an up-to-date source of news, scores and facts that gathers from multiple sources in real-time.
+
+- What problem does it solve?  Our News Aggregator site helps users by consolidating many news websites into a single page, saving users time and energy spent   navigating the internet.
+
+- What did you learn? How to handle multiple APIs in a single application as well as coordinating commits with other team members. 
 
 ## Installation
 
-N/A
+A link to the live site: https://nelson92.github.io/project-one
 
 ## Usage
 
 ![News Aggregator Screenshot](assets/images/news-aggregator-screenshot.png)
 
-Provide instructions and examples for use. Include screenshots as needed.
 
-https://nelson92.github.io/project-one/
+
 
 ## Credits
 
