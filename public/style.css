@@ -19,7 +19,7 @@ header {
     background-color: var(--deep-champagne);
     border-bottom: solid 2px var(--eerie-black);
     display: flex;
-    height: 150px;
+    height: 180px;
     text-align: center;
     width: 100%;
     justify-content: space-evenly;
