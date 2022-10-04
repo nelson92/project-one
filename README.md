@@ -43,5 +43,5 @@ Sources:
 - https://www.schemecolor.com/vintage-newspaper.php - SchemeColor.com [The color palette inspiration for our web application came from this article]
 
 ## License
-
+MIT License
 Please refer to the LICENSE in the repo.
